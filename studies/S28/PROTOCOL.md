@@ -2,6 +2,8 @@
 
 Frozen before tuning or evaluation. The corresponding Git revision records this design and the executable analysis. No existing four-study simulation supplies evidence for this study.
 
+Computational correction: the initial NumPy 2.2.6 run triggered the documented Apple matrix-multiplication warning issue ([NumPy #28687](https://github.com/numpy/numpy/issues/28687)). NumPy is pinned to 2.3.5 for its upstream correction and the analysis is repeated with warnings treated as errors. No split, candidate grid, metric, seed or result-selection rule changed in response to the observed outcome.
+
 ## Decision and estimand
 
 Rank already observed campaign contacts immediately before the call, at fixed capacity. The target is the recorded binary term-deposit subscription outcome, not the causal effect of calling. The source does not provide a fixed subsequent follow-up horizon or stable customer IDs. A record is a contact/example, not a proven independent person. Population: contacts in one historical Portuguese bank campaign, May 2008–November 2010.
