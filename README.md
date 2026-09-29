@@ -2,9 +2,11 @@
 
 Research by Michael P. Gibb, Ph.D. Public portfolio: [michaelpgibb.com/research](https://michaelpgibb.com/research).
 
-The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04, S58 and S43 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. S13 has inspected data; S07 and S22 have source-access or reuse dependencies. The other 51 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
+The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04, S58, S43 and S13 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. S07 and S22 have source-access or reuse dependencies. The other 51 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
 
 ## Evaluated research
+
+- [S13 — Manufacturing screening](studies/S13): a calendar-separated sensor comparison finds weak later-month ranking and unstable sensor selection. At 20% inspection capacity, boosting identifies 4 of 22 failures; no clear advantage over the sparse comparator is established.
 
 - [S43 — Property valuation](studies/S43): a pre-sale characteristics snapshot and later Cook County sales. Spatial boosting has no established accuracy advantage over hedonic regression; nominal 90% intervals cover 89.8% countywide but only 70.1% in the historical Hyde Park township cohort.
 

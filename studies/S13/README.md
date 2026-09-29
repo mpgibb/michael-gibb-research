@@ -1,6 +1,6 @@
 # S13 — Reliable quality screening with many sensors and few failures
 
-Status: data_ready. The official archive and calendar have been inspected, and the evaluation is frozen in [PROTOCOL.md](PROTOCOL.md). No model result is claimed before execution.
+Status: evaluated. Run `S13-608719b7-eea568ba` finds weak later-month screening performance: at 20% capacity, boosting identifies 4 of 22 failures and sparse logistic identifies 3. The primary comparison is inconclusive. See [REPORT.md](REPORT.md).
 
 ## Decision
 
@@ -30,4 +30,4 @@ An inspection-budget slider updates missed-failure and unnecessary-inspection co
 
 Anonymous sensors prevent engineering root-cause claims. A correlated measurement is not a proven process fault, and this small historical sample does not validate deployment in a modern plant.
 
-Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S13/study.py`. Only aggregate results will be published after evaluation and verification.
+Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S13/study.py`. Run `uv run python scripts/report_s13.py` to rebuild the report and figures. Only aggregate results are published.

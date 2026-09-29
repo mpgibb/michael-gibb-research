@@ -356,11 +356,11 @@
       "coverage": "Real semiconductor measurements and pass/fail outcomes; 2008",
       "limitation": "Small, imbalanced historical sample with many missing values; anonymized sensors limit interpretation."
     },
-    "execution_status": "data_ready",
-    "publication_status": "unpublished",
-    "result_path": null,
-    "code_url": null,
-    "published_url": null,
+    "execution_status": "evaluated",
+    "publication_status": "published",
+    "result_path": "studies/S13/results/result.json",
+    "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S13",
+    "published_url": "https://michaelpgibb.com/research/s13-reliable-quality-screening-with-many-sensors-and-few-failures",
     "updated": "2026-09-29"
   },
   {

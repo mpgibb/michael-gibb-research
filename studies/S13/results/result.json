@@ -1,0 +1,5744 @@
+{
+  "schema_version": "1.0",
+  "study_id": "S13",
+  "run_id": "S13-608719b7-eea568ba",
+  "code_version": "608719b77b23e68f298f456d69b725aba42a8d16",
+  "source_sha256": {
+    "research_program/__init__.py": "5abb4829b477fd3068ee4c11dad2b59cd33e90aad06a17a5e9fb2f840a75abf1",
+    "research_program/evaluation.py": "09a5d060c34b8cd1e5a3330d90f5ff3e12adbca8cfe1ebe3297da2b91d227e45",
+    "research_program/io.py": "16de123c16d80bce5eb8d6766224dec1729d7c00449c2528f2348d86ad68d35f",
+    "research_program/validate.py": "3e6a591e2b77799bdf73683db438b2998e2e457340626c98b7ceed510ab3329e",
+    "studies/S13/config.json": "ca811af6bb5b244d18a7b45585b7fb630599717ef85a3b54c69a32cfad3bd4a1",
+    "studies/S13/ingest.py": "200f4e362ca3ae641f61dcd0972cd5f83ff6a11af8bcccd8de1428dd8492bf1e",
+    "studies/S13/models.py": "1078308baa4af3983738cae374ed7beafc21d7eb4a925b34754609a8ed22a778",
+    "studies/S13/study.py": "8928b2ce70803371898fbccd411e7ee785ff549a932e17f597f92c02d618b4c8",
+    "uv.lock": "15f381c7c88897e1df049af6297905625b6869a6c9ff110ab1647ec2d0f305f4"
+  },
+  "evaluated_on": "2026-09-29",
+  "data": {
+    "source_url": "https://archive.ics.uci.edu/dataset/179/secom",
+    "release": "SECOM original files; retrieved September 29, 2026",
+    "sha256": "eea568baf3c2229096d7d294cf0b096b5502bd96d92c0b80a65b84714059be8e",
+    "license": "CC BY 4.0",
+    "citation": "McCann, M. & Johnston, A. (2008). SECOM [Dataset]. UCI Machine Learning Repository. doi:10.24432/C54305.",
+    "file_sha256": {
+      "secom.data": "20f0e7ee434f7dcbae0eea9ffff009a2b57f42d6b0dc9a5bd4f00782c0a3374c",
+      "secom_labels.data": "126884cf453705c9e61a903fe906f0665a3b45ce3639e621edc5c93c89627e03"
+    }
+  },
+  "target": {
+    "label": "Publisher +1 failure versus −1 pass",
+    "estimand": "Retrospective failure screening, conditional on availability of recorded sensor measurements",
+    "prediction_cutoff": "At an assumed screening point with recorded sensor measurements; pre-test acquisition times are not independently documented",
+    "horizon": "Associated in-house quality test; no verified advance-warning horizon",
+    "unit": "One production entity/source row"
+  },
+  "cohort": "October 1–17, 2008 final entities, following July–August development and September validation; original calendar retained",
+  "samples": {
+    "total": 1567,
+    "total_failures": 104,
+    "development": 618,
+    "development_failures": 65,
+    "validation": 590,
+    "validation_failures": 17,
+    "final_fit": 1208,
+    "final_fit_failures": 82,
+    "test": 359,
+    "test_failures": 22,
+    "test_days": 17
+  },
+  "models": [
+    {
+      "id": "elastic_net",
+      "label": "Sparse elastic-net logistic",
+      "specification": "Frozen elastic_net; selected setting 0.1; training-only preprocessing. See protocol."
+    },
+    {
+      "id": "pca_monitor",
+      "label": "PCA process monitor",
+      "specification": "Frozen pca_monitor; selected setting 5; training-only preprocessing. See protocol."
+    },
+    {
+      "id": "boosting",
+      "label": "Gradient boosting",
+      "specification": "Frozen boosting; selected setting 7; training-only preprocessing. See protocol."
+    },
+    {
+      "id": "boosting_no_missing",
+      "label": "Boosting without missingness indicators",
+      "specification": "Frozen boosting_no_missing; selected setting 7; training-only preprocessing. See protocol."
+    },
+    {
+      "id": "prevalence",
+      "label": "Training failure prevalence",
+      "specification": "Constant final-training prevalence"
+    }
+  ],
+  "metrics": [
+    {
+      "model": "elastic_net",
+      "name": "average_precision",
+      "estimate": 0.076527,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.03447771,
+      "upper": 0.17479158,
+      "confidence": 0.95
+    },
+    {
+      "model": "elastic_net",
+      "name": "roc_auc",
+      "estimate": 0.53560831,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.37720188,
+      "upper": 0.68057086,
+      "confidence": 0.95
+    },
+    {
+      "model": "elastic_net",
+      "name": "log_loss",
+      "estimate": 0.25504353,
+      "unit": "natural-log units",
+      "split": "final",
+      "lower": 0.12529742,
+      "upper": 0.39097509,
+      "confidence": 0.95
+    },
+    {
+      "model": "elastic_net",
+      "name": "brier",
+      "estimate": 0.06015363,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.02737666,
+      "upper": 0.09407077,
+      "confidence": 0.95
+    },
+    {
+      "model": "pca_monitor",
+      "name": "average_precision",
+      "estimate": 0.06600792,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.03179912,
+      "upper": 0.13351209,
+      "confidence": 0.95
+    },
+    {
+      "model": "pca_monitor",
+      "name": "roc_auc",
+      "estimate": 0.47167521,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.3581266,
+      "upper": 0.53646576,
+      "confidence": 0.95
+    },
+    {
+      "model": "pca_monitor",
+      "name": "log_loss",
+      "estimate": 0.23582129,
+      "unit": "natural-log units",
+      "split": "final",
+      "lower": 0.14475165,
+      "upper": 0.32845556,
+      "confidence": 0.95
+    },
+    {
+      "model": "pca_monitor",
+      "name": "brier",
+      "estimate": 0.05846131,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.02802751,
+      "upper": 0.0895663,
+      "confidence": 0.95
+    },
+    {
+      "model": "boosting",
+      "name": "average_precision",
+      "estimate": 0.0625722,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.03172822,
+      "upper": 0.09925331,
+      "confidence": 0.95
+    },
+    {
+      "model": "boosting",
+      "name": "roc_auc",
+      "estimate": 0.48637712,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.38551462,
+      "upper": 0.59411109,
+      "confidence": 0.95
+    },
+    {
+      "model": "boosting",
+      "name": "log_loss",
+      "estimate": 0.2585952,
+      "unit": "natural-log units",
+      "split": "final",
+      "lower": 0.12252014,
+      "upper": 0.39781414,
+      "confidence": 0.95
+    },
+    {
+      "model": "boosting",
+      "name": "brier",
+      "estimate": 0.0594379,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.02512919,
+      "upper": 0.09432986,
+      "confidence": 0.95
+    },
+    {
+      "model": "boosting_no_missing",
+      "name": "average_precision",
+      "estimate": 0.06319915,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.03123412,
+      "upper": 0.10198454,
+      "confidence": 0.95
+    },
+    {
+      "model": "boosting_no_missing",
+      "name": "roc_auc",
+      "estimate": 0.48219585,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.36737722,
+      "upper": 0.59340734,
+      "confidence": 0.95
+    },
+    {
+      "model": "boosting_no_missing",
+      "name": "log_loss",
+      "estimate": 0.25863677,
+      "unit": "natural-log units",
+      "split": "final",
+      "lower": 0.12407434,
+      "upper": 0.39705881,
+      "confidence": 0.95
+    },
+    {
+      "model": "boosting_no_missing",
+      "name": "brier",
+      "estimate": 0.05936449,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.02511887,
+      "upper": 0.09407868,
+      "confidence": 0.95
+    },
+    {
+      "model": "prevalence",
+      "name": "average_precision",
+      "estimate": 0.06128134,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.02517341,
+      "upper": 0.0977096,
+      "confidence": 0.95
+    },
+    {
+      "model": "prevalence",
+      "name": "roc_auc",
+      "estimate": 0.5,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.5,
+      "upper": 0.5,
+      "confidence": 0.95
+    },
+    {
+      "model": "prevalence",
+      "name": "log_loss",
+      "estimate": 0.23083375,
+      "unit": "natural-log units",
+      "split": "final",
+      "lower": 0.13624155,
+      "upper": 0.32626515,
+      "confidence": 0.95
+    },
+    {
+      "model": "prevalence",
+      "name": "brier",
+      "estimate": 0.05756949,
+      "unit": "proportion",
+      "split": "final",
+      "lower": 0.02636363,
+      "upper": 0.08905219,
+      "confidence": 0.95
+    }
+  ],
+  "uncertainty": "1,000 paired calendar-day cluster bootstrap draws; 95% percentile intervals condition on the fitted models and 17 observed test days. Two-day circular-block sensitivity is supplementary. Sensor stability uses 30 training-day bootstrap refits.",
+  "assumptions": [
+    "Recorded sensors are hypothetically available at screening; the source cannot verify their exact pre-test acquisition timing.",
+    "Capacity selects the top-scored entities across the complete final batch, not a daily production schedule.",
+    "Calendar days proxy dependence; unobserved wafer/lot groups cannot be reconstructed."
+  ],
+  "limitations": [
+    "Only 22 final failures and 17 final days support limited precision.",
+    "Anonymous sensors and missing acquisition times prevent root-cause and validated early-warning claims.",
+    "A short historical sample with changing prevalence does not validate a modern production line.",
+    "Intervals condition on fitted models and cannot account for unrecorded batch dependence.",
+    "Selection stability is descriptive and does not establish causal or physical sensor importance.",
+    "Inspection counts are historical ranking outcomes, not measured savings or avoided failures.",
+    "Independent technical review is pending."
+  ],
+  "tables": {
+    "audit": {
+      "actual_sensor_columns": 590,
+      "documented_sensor_columns": 591,
+      "missing_cells": 41951,
+      "constant_columns": 116,
+      "duplicate_columns": 104,
+      "duplicate_sensor_rows": 0,
+      "duplicate_timestamps": 33,
+      "columns_over_half_missing": 28,
+      "months": [
+        {
+          "month": "2008-07",
+          "entities": 63,
+          "failures": 14
+        },
+        {
+          "month": "2008-08",
+          "entities": 555,
+          "failures": 51
+        },
+        {
+          "month": "2008-09",
+          "entities": 590,
+          "failures": 17
+        },
+        {
+          "month": "2008-10",
+          "entities": 359,
+          "failures": 22
+        }
+      ],
+      "source_timestamp_min": "2008-07-19 11:55:00",
+      "source_timestamp_max": "2008-10-17 06:07:00"
+    },
+    "tuning": [
+      {
+        "model": "elastic_net",
+        "setting": 0.01,
+        "average_precision": 0.02881356,
+        "roc_auc": 0.5,
+        "log_loss": 0.17281944,
+        "brier": 0.03381486
+      },
+      {
+        "model": "elastic_net",
+        "setting": 0.1,
+        "average_precision": 0.10715788,
+        "roc_auc": 0.64757212,
+        "log_loss": 0.14591657,
+        "brier": 0.03053846
+      },
+      {
+        "model": "elastic_net",
+        "setting": 1.0,
+        "average_precision": 0.03721311,
+        "roc_auc": 0.52561339,
+        "log_loss": 0.51078419,
+        "brier": 0.11951243
+      },
+      {
+        "model": "pca_monitor",
+        "setting": 5,
+        "average_precision": 0.06775256,
+        "roc_auc": 0.60527667,
+        "log_loss": 0.19110125,
+        "brier": 0.03809905
+      },
+      {
+        "model": "pca_monitor",
+        "setting": 15,
+        "average_precision": 0.04947782,
+        "roc_auc": 0.59767991,
+        "log_loss": 0.33002863,
+        "brier": 0.08952386
+      },
+      {
+        "model": "boosting",
+        "setting": 3,
+        "average_precision": 0.24236878,
+        "roc_auc": 0.68586387,
+        "log_loss": 0.13416233,
+        "brier": 0.0277121
+      },
+      {
+        "model": "boosting",
+        "setting": 7,
+        "average_precision": 0.2519187,
+        "roc_auc": 0.75669849,
+        "log_loss": 0.12110762,
+        "brier": 0.02652438
+      }
+    ],
+    "selected_settings": {
+      "elastic_net": 0.1,
+      "pca_monitor": 5,
+      "boosting": 7
+    },
+    "fit_information": {
+      "elastic_net": {
+        "retained_sensor_columns": 444,
+        "transformed_features": 502,
+        "nonzero_coefficients": 79,
+        "selected_sensors": 78,
+        "iterations": 565
+      },
+      "pca_monitor": {
+        "retained_sensor_columns": 444,
+        "transformed_features": 444
+      },
+      "boosting": {
+        "retained_sensor_columns": 444,
+        "transformed_features": 502
+      },
+      "boosting_no_missing": {
+        "retained_sensor_columns": 444,
+        "transformed_features": 444
+      }
+    },
+    "primary_difference": {
+      "metric": "average_precision",
+      "comparison": "boosting minus elastic_net",
+      "estimate": -0.0139548,
+      "lower": -0.09631184,
+      "upper": 0.02118756,
+      "valid_draws": 1000,
+      "skipped_draws": 0
+    },
+    "block_sensitivity": {
+      "block_days": 2,
+      "lower": -0.0676444,
+      "upper": 0.01447559,
+      "valid_draws": 1000
+    },
+    "capacity": [
+      {
+        "model": "elastic_net",
+        "capacity": 0.0,
+        "inspections": 0,
+        "detected_failures": 0,
+        "missed_failures": 22,
+        "unnecessary_inspections": 0,
+        "recall": 0.0,
+        "precision": null
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.05,
+        "inspections": 17,
+        "detected_failures": 1,
+        "missed_failures": 21,
+        "unnecessary_inspections": 16,
+        "recall": 0.04545455,
+        "precision": 0.05882353
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.1,
+        "inspections": 35,
+        "detected_failures": 2,
+        "missed_failures": 20,
+        "unnecessary_inspections": 33,
+        "recall": 0.09090909,
+        "precision": 0.05714286
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.15,
+        "inspections": 53,
+        "detected_failures": 3,
+        "missed_failures": 19,
+        "unnecessary_inspections": 50,
+        "recall": 0.13636364,
+        "precision": 0.05660377
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.2,
+        "inspections": 71,
+        "detected_failures": 3,
+        "missed_failures": 19,
+        "unnecessary_inspections": 68,
+        "recall": 0.13636364,
+        "precision": 0.04225352
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.25,
+        "inspections": 89,
+        "detected_failures": 4,
+        "missed_failures": 18,
+        "unnecessary_inspections": 85,
+        "recall": 0.18181818,
+        "precision": 0.04494382
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.3,
+        "inspections": 107,
+        "detected_failures": 6,
+        "missed_failures": 16,
+        "unnecessary_inspections": 101,
+        "recall": 0.27272727,
+        "precision": 0.05607477
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.4,
+        "inspections": 143,
+        "detected_failures": 9,
+        "missed_failures": 13,
+        "unnecessary_inspections": 134,
+        "recall": 0.40909091,
+        "precision": 0.06293706
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.5,
+        "inspections": 179,
+        "detected_failures": 13,
+        "missed_failures": 9,
+        "unnecessary_inspections": 166,
+        "recall": 0.59090909,
+        "precision": 0.0726257
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.6,
+        "inspections": 215,
+        "detected_failures": 16,
+        "missed_failures": 6,
+        "unnecessary_inspections": 199,
+        "recall": 0.72727273,
+        "precision": 0.0744186
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 0.75,
+        "inspections": 269,
+        "detected_failures": 19,
+        "missed_failures": 3,
+        "unnecessary_inspections": 250,
+        "recall": 0.86363636,
+        "precision": 0.07063197
+      },
+      {
+        "model": "elastic_net",
+        "capacity": 1.0,
+        "inspections": 359,
+        "detected_failures": 22,
+        "missed_failures": 0,
+        "unnecessary_inspections": 337,
+        "recall": 1.0,
+        "precision": 0.06128134
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.0,
+        "inspections": 0,
+        "detected_failures": 0,
+        "missed_failures": 22,
+        "unnecessary_inspections": 0,
+        "recall": 0.0,
+        "precision": null
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.05,
+        "inspections": 17,
+        "detected_failures": 1,
+        "missed_failures": 21,
+        "unnecessary_inspections": 16,
+        "recall": 0.04545455,
+        "precision": 0.05882353
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.1,
+        "inspections": 35,
+        "detected_failures": 1,
+        "missed_failures": 21,
+        "unnecessary_inspections": 34,
+        "recall": 0.04545455,
+        "precision": 0.02857143
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.15,
+        "inspections": 53,
+        "detected_failures": 3,
+        "missed_failures": 19,
+        "unnecessary_inspections": 50,
+        "recall": 0.13636364,
+        "precision": 0.05660377
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.2,
+        "inspections": 71,
+        "detected_failures": 5,
+        "missed_failures": 17,
+        "unnecessary_inspections": 66,
+        "recall": 0.22727273,
+        "precision": 0.07042254
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.25,
+        "inspections": 89,
+        "detected_failures": 6,
+        "missed_failures": 16,
+        "unnecessary_inspections": 83,
+        "recall": 0.27272727,
+        "precision": 0.06741573
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.3,
+        "inspections": 107,
+        "detected_failures": 6,
+        "missed_failures": 16,
+        "unnecessary_inspections": 101,
+        "recall": 0.27272727,
+        "precision": 0.05607477
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.4,
+        "inspections": 143,
+        "detected_failures": 8,
+        "missed_failures": 14,
+        "unnecessary_inspections": 135,
+        "recall": 0.36363636,
+        "precision": 0.05594406
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.5,
+        "inspections": 179,
+        "detected_failures": 9,
+        "missed_failures": 13,
+        "unnecessary_inspections": 170,
+        "recall": 0.40909091,
+        "precision": 0.05027933
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.6,
+        "inspections": 215,
+        "detected_failures": 10,
+        "missed_failures": 12,
+        "unnecessary_inspections": 205,
+        "recall": 0.45454545,
+        "precision": 0.04651163
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 0.75,
+        "inspections": 269,
+        "detected_failures": 16,
+        "missed_failures": 6,
+        "unnecessary_inspections": 253,
+        "recall": 0.72727273,
+        "precision": 0.05947955
+      },
+      {
+        "model": "pca_monitor",
+        "capacity": 1.0,
+        "inspections": 359,
+        "detected_failures": 22,
+        "missed_failures": 0,
+        "unnecessary_inspections": 337,
+        "recall": 1.0,
+        "precision": 0.06128134
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.0,
+        "inspections": 0,
+        "detected_failures": 0,
+        "missed_failures": 22,
+        "unnecessary_inspections": 0,
+        "recall": 0.0,
+        "precision": null
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.05,
+        "inspections": 17,
+        "detected_failures": 1,
+        "missed_failures": 21,
+        "unnecessary_inspections": 16,
+        "recall": 0.04545455,
+        "precision": 0.05882353
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.1,
+        "inspections": 35,
+        "detected_failures": 1,
+        "missed_failures": 21,
+        "unnecessary_inspections": 34,
+        "recall": 0.04545455,
+        "precision": 0.02857143
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.15,
+        "inspections": 53,
+        "detected_failures": 2,
+        "missed_failures": 20,
+        "unnecessary_inspections": 51,
+        "recall": 0.09090909,
+        "precision": 0.03773585
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.2,
+        "inspections": 71,
+        "detected_failures": 4,
+        "missed_failures": 18,
+        "unnecessary_inspections": 67,
+        "recall": 0.18181818,
+        "precision": 0.05633803
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.25,
+        "inspections": 89,
+        "detected_failures": 4,
+        "missed_failures": 18,
+        "unnecessary_inspections": 85,
+        "recall": 0.18181818,
+        "precision": 0.04494382
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.3,
+        "inspections": 107,
+        "detected_failures": 6,
+        "missed_failures": 16,
+        "unnecessary_inspections": 101,
+        "recall": 0.27272727,
+        "precision": 0.05607477
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.4,
+        "inspections": 143,
+        "detected_failures": 10,
+        "missed_failures": 12,
+        "unnecessary_inspections": 133,
+        "recall": 0.45454545,
+        "precision": 0.06993007
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.5,
+        "inspections": 179,
+        "detected_failures": 11,
+        "missed_failures": 11,
+        "unnecessary_inspections": 168,
+        "recall": 0.5,
+        "precision": 0.06145251
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.6,
+        "inspections": 215,
+        "detected_failures": 13,
+        "missed_failures": 9,
+        "unnecessary_inspections": 202,
+        "recall": 0.59090909,
+        "precision": 0.06046512
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.75,
+        "inspections": 269,
+        "detected_failures": 16,
+        "missed_failures": 6,
+        "unnecessary_inspections": 253,
+        "recall": 0.72727273,
+        "precision": 0.05947955
+      },
+      {
+        "model": "boosting",
+        "capacity": 1.0,
+        "inspections": 359,
+        "detected_failures": 22,
+        "missed_failures": 0,
+        "unnecessary_inspections": 337,
+        "recall": 1.0,
+        "precision": 0.06128134
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.0,
+        "inspections": 0,
+        "detected_failures": 0,
+        "missed_failures": 22,
+        "unnecessary_inspections": 0,
+        "recall": 0.0,
+        "precision": null
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.05,
+        "inspections": 17,
+        "detected_failures": 1,
+        "missed_failures": 21,
+        "unnecessary_inspections": 16,
+        "recall": 0.04545455,
+        "precision": 0.05882353
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.1,
+        "inspections": 35,
+        "detected_failures": 1,
+        "missed_failures": 21,
+        "unnecessary_inspections": 34,
+        "recall": 0.04545455,
+        "precision": 0.02857143
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.15,
+        "inspections": 53,
+        "detected_failures": 2,
+        "missed_failures": 20,
+        "unnecessary_inspections": 51,
+        "recall": 0.09090909,
+        "precision": 0.03773585
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.2,
+        "inspections": 71,
+        "detected_failures": 2,
+        "missed_failures": 20,
+        "unnecessary_inspections": 69,
+        "recall": 0.09090909,
+        "precision": 0.02816901
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.25,
+        "inspections": 89,
+        "detected_failures": 3,
+        "missed_failures": 19,
+        "unnecessary_inspections": 86,
+        "recall": 0.13636364,
+        "precision": 0.03370787
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.3,
+        "inspections": 107,
+        "detected_failures": 7,
+        "missed_failures": 15,
+        "unnecessary_inspections": 100,
+        "recall": 0.31818182,
+        "precision": 0.06542056
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.4,
+        "inspections": 143,
+        "detected_failures": 9,
+        "missed_failures": 13,
+        "unnecessary_inspections": 134,
+        "recall": 0.40909091,
+        "precision": 0.06293706
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.5,
+        "inspections": 179,
+        "detected_failures": 11,
+        "missed_failures": 11,
+        "unnecessary_inspections": 168,
+        "recall": 0.5,
+        "precision": 0.06145251
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.6,
+        "inspections": 215,
+        "detected_failures": 12,
+        "missed_failures": 10,
+        "unnecessary_inspections": 203,
+        "recall": 0.54545455,
+        "precision": 0.05581395
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 0.75,
+        "inspections": 269,
+        "detected_failures": 16,
+        "missed_failures": 6,
+        "unnecessary_inspections": 253,
+        "recall": 0.72727273,
+        "precision": 0.05947955
+      },
+      {
+        "model": "boosting_no_missing",
+        "capacity": 1.0,
+        "inspections": 359,
+        "detected_failures": 22,
+        "missed_failures": 0,
+        "unnecessary_inspections": 337,
+        "recall": 1.0,
+        "precision": 0.06128134
+      }
+    ],
+    "calibration": [
+      {
+        "model": "elastic_net",
+        "bin": 1,
+        "entities": 72,
+        "failures": 2,
+        "mean_probability": 0.0088472,
+        "observed_failure_rate": 0.02777778
+      },
+      {
+        "model": "elastic_net",
+        "bin": 2,
+        "entities": 72,
+        "failures": 4,
+        "mean_probability": 0.01751058,
+        "observed_failure_rate": 0.05555556
+      },
+      {
+        "model": "elastic_net",
+        "bin": 3,
+        "entities": 72,
+        "failures": 7,
+        "mean_probability": 0.02587599,
+        "observed_failure_rate": 0.09722222
+      },
+      {
+        "model": "elastic_net",
+        "bin": 4,
+        "entities": 72,
+        "failures": 6,
+        "mean_probability": 0.03925108,
+        "observed_failure_rate": 0.08333333
+      },
+      {
+        "model": "elastic_net",
+        "bin": 5,
+        "entities": 71,
+        "failures": 3,
+        "mean_probability": 0.09727229,
+        "observed_failure_rate": 0.04225352
+      },
+      {
+        "model": "pca_monitor",
+        "bin": 1,
+        "entities": 72,
+        "failures": 4,
+        "mean_probability": 0.05444054,
+        "observed_failure_rate": 0.05555556
+      },
+      {
+        "model": "pca_monitor",
+        "bin": 2,
+        "entities": 72,
+        "failures": 8,
+        "mean_probability": 0.06370804,
+        "observed_failure_rate": 0.11111111
+      },
+      {
+        "model": "pca_monitor",
+        "bin": 3,
+        "entities": 72,
+        "failures": 2,
+        "mean_probability": 0.07086598,
+        "observed_failure_rate": 0.02777778
+      },
+      {
+        "model": "pca_monitor",
+        "bin": 4,
+        "entities": 72,
+        "failures": 3,
+        "mean_probability": 0.08097086,
+        "observed_failure_rate": 0.04166667
+      },
+      {
+        "model": "pca_monitor",
+        "bin": 5,
+        "entities": 71,
+        "failures": 5,
+        "mean_probability": 0.10824271,
+        "observed_failure_rate": 0.07042254
+      },
+      {
+        "model": "boosting",
+        "bin": 1,
+        "entities": 72,
+        "failures": 5,
+        "mean_probability": 0.01166518,
+        "observed_failure_rate": 0.06944444
+      },
+      {
+        "model": "boosting",
+        "bin": 2,
+        "entities": 72,
+        "failures": 4,
+        "mean_probability": 0.01787113,
+        "observed_failure_rate": 0.05555556
+      },
+      {
+        "model": "boosting",
+        "bin": 3,
+        "entities": 72,
+        "failures": 3,
+        "mean_probability": 0.02400607,
+        "observed_failure_rate": 0.04166667
+      },
+      {
+        "model": "boosting",
+        "bin": 4,
+        "entities": 72,
+        "failures": 6,
+        "mean_probability": 0.03269812,
+        "observed_failure_rate": 0.08333333
+      },
+      {
+        "model": "boosting",
+        "bin": 5,
+        "entities": 71,
+        "failures": 4,
+        "mean_probability": 0.0654359,
+        "observed_failure_rate": 0.05633803
+      },
+      {
+        "model": "boosting_no_missing",
+        "bin": 1,
+        "entities": 72,
+        "failures": 5,
+        "mean_probability": 0.01133725,
+        "observed_failure_rate": 0.06944444
+      },
+      {
+        "model": "boosting_no_missing",
+        "bin": 2,
+        "entities": 72,
+        "failures": 5,
+        "mean_probability": 0.01751962,
+        "observed_failure_rate": 0.06944444
+      },
+      {
+        "model": "boosting_no_missing",
+        "bin": 3,
+        "entities": 72,
+        "failures": 3,
+        "mean_probability": 0.02348029,
+        "observed_failure_rate": 0.04166667
+      },
+      {
+        "model": "boosting_no_missing",
+        "bin": 4,
+        "entities": 72,
+        "failures": 7,
+        "mean_probability": 0.03270001,
+        "observed_failure_rate": 0.09722222
+      },
+      {
+        "model": "boosting_no_missing",
+        "bin": 5,
+        "entities": 71,
+        "failures": 2,
+        "mean_probability": 0.0641054,
+        "observed_failure_rate": 0.02816901
+      },
+      {
+        "model": "prevalence",
+        "bin": 1,
+        "entities": 72,
+        "failures": 6,
+        "mean_probability": 0.06788079,
+        "observed_failure_rate": 0.08333333
+      },
+      {
+        "model": "prevalence",
+        "bin": 2,
+        "entities": 72,
+        "failures": 9,
+        "mean_probability": 0.06788079,
+        "observed_failure_rate": 0.125
+      },
+      {
+        "model": "prevalence",
+        "bin": 3,
+        "entities": 72,
+        "failures": 4,
+        "mean_probability": 0.06788079,
+        "observed_failure_rate": 0.05555556
+      },
+      {
+        "model": "prevalence",
+        "bin": 4,
+        "entities": 72,
+        "failures": 2,
+        "mean_probability": 0.06788079,
+        "observed_failure_rate": 0.02777778
+      },
+      {
+        "model": "prevalence",
+        "bin": 5,
+        "entities": 71,
+        "failures": 1,
+        "mean_probability": 0.06788079,
+        "observed_failure_rate": 0.01408451
+      }
+    ],
+    "diagnostics": [
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-01",
+        "entities": 17,
+        "failures": 1,
+        "mean_probability": 0.03426112,
+        "brier": 0.05705359
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-02",
+        "entities": 35,
+        "failures": 5,
+        "mean_probability": 0.04444635,
+        "brier": 0.13503588
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-03",
+        "entities": 25,
+        "failures": 0,
+        "mean_probability": 0.04023317,
+        "brier": 0.00241968
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-04",
+        "entities": 18,
+        "failures": 1,
+        "mean_probability": 0.03237697,
+        "brier": 0.05506447
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-05",
+        "entities": 32,
+        "failures": 6,
+        "mean_probability": 0.03176076,
+        "brier": 0.18170173
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-06",
+        "entities": 48,
+        "failures": 5,
+        "mean_probability": 0.0365812,
+        "brier": 0.09429208
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-07",
+        "entities": 28,
+        "failures": 1,
+        "mean_probability": 0.0562995,
+        "brier": 0.04143925
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-08",
+        "entities": 26,
+        "failures": 0,
+        "mean_probability": 0.03271591,
+        "brier": 0.00187628
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-09",
+        "entities": 8,
+        "failures": 2,
+        "mean_probability": 0.0158756,
+        "brier": 0.23776214
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-10",
+        "entities": 10,
+        "failures": 0,
+        "mean_probability": 0.03103818,
+        "brier": 0.00164264
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-11",
+        "entities": 11,
+        "failures": 0,
+        "mean_probability": 0.07117396,
+        "brier": 0.02172559
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-12",
+        "entities": 7,
+        "failures": 0,
+        "mean_probability": 0.03994203,
+        "brier": 0.0033867
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-13",
+        "entities": 22,
+        "failures": 0,
+        "mean_probability": 0.04014734,
+        "brier": 0.00986142
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-14",
+        "entities": 16,
+        "failures": 0,
+        "mean_probability": 0.02920066,
+        "brier": 0.00112382
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-15",
+        "entities": 34,
+        "failures": 1,
+        "mean_probability": 0.03030136,
+        "brier": 0.02487418
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-16",
+        "entities": 19,
+        "failures": 0,
+        "mean_probability": 0.02692942,
+        "brier": 0.00131766
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "test_day",
+        "group": "2008-10-17",
+        "entities": 3,
+        "failures": 0,
+        "mean_probability": 0.05835748,
+        "brier": 0.00362467
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "missingness",
+        "group": "At most 5% sensors missing",
+        "entities": 311,
+        "failures": 22,
+        "mean_probability": 0.03897618,
+        "brier": 0.06921741
+      },
+      {
+        "model": "elastic_net",
+        "grouping": "missingness",
+        "group": "More than 5% sensors missing",
+        "entities": 48,
+        "failures": 0,
+        "mean_probability": 0.02857607,
+        "brier": 0.00142787
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-01",
+        "entities": 17,
+        "failures": 1,
+        "mean_probability": 0.0620059,
+        "brier": 0.05618753
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-02",
+        "entities": 35,
+        "failures": 5,
+        "mean_probability": 0.07213306,
+        "brier": 0.12798731
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-03",
+        "entities": 25,
+        "failures": 0,
+        "mean_probability": 0.07111284,
+        "brier": 0.00534967
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-04",
+        "entities": 18,
+        "failures": 1,
+        "mean_probability": 0.06455761,
+        "brier": 0.05416468
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-05",
+        "entities": 32,
+        "failures": 6,
+        "mean_probability": 0.0798219,
+        "brier": 0.16568742
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-06",
+        "entities": 48,
+        "failures": 5,
+        "mean_probability": 0.07527301,
+        "brier": 0.0946289
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-07",
+        "entities": 28,
+        "failures": 1,
+        "mean_probability": 0.07836341,
+        "brier": 0.0374597
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-08",
+        "entities": 26,
+        "failures": 0,
+        "mean_probability": 0.08000977,
+        "brier": 0.00724512
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-09",
+        "entities": 8,
+        "failures": 2,
+        "mean_probability": 0.06827858,
+        "brier": 0.22279013
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-10",
+        "entities": 10,
+        "failures": 0,
+        "mean_probability": 0.07716309,
+        "brier": 0.00633564
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-11",
+        "entities": 11,
+        "failures": 0,
+        "mean_probability": 0.0872909,
+        "brier": 0.00852203
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-12",
+        "entities": 7,
+        "failures": 0,
+        "mean_probability": 0.07101514,
+        "brier": 0.0051277
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-13",
+        "entities": 22,
+        "failures": 0,
+        "mean_probability": 0.08787016,
+        "brier": 0.00925853
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-14",
+        "entities": 16,
+        "failures": 0,
+        "mean_probability": 0.07634582,
+        "brier": 0.00602263
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-15",
+        "entities": 34,
+        "failures": 1,
+        "mean_probability": 0.08149081,
+        "brier": 0.02872576
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-16",
+        "entities": 19,
+        "failures": 0,
+        "mean_probability": 0.06882868,
+        "brier": 0.00537042
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "test_day",
+        "group": "2008-10-17",
+        "entities": 3,
+        "failures": 0,
+        "mean_probability": 0.05181938,
+        "brier": 0.00288445
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "missingness",
+        "group": "At most 5% sensors missing",
+        "entities": 311,
+        "failures": 22,
+        "mean_probability": 0.07643019,
+        "brier": 0.06666057
+      },
+      {
+        "model": "pca_monitor",
+        "grouping": "missingness",
+        "group": "More than 5% sensors missing",
+        "entities": 48,
+        "failures": 0,
+        "mean_probability": 0.06988317,
+        "brier": 0.00533691
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-01",
+        "entities": 17,
+        "failures": 1,
+        "mean_probability": 0.03235158,
+        "brier": 0.06007681
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-02",
+        "entities": 35,
+        "failures": 5,
+        "mean_probability": 0.03395336,
+        "brier": 0.13641037
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-03",
+        "entities": 25,
+        "failures": 0,
+        "mean_probability": 0.02843928,
+        "brier": 0.00102264
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-04",
+        "entities": 18,
+        "failures": 1,
+        "mean_probability": 0.02790589,
+        "brier": 0.05452183
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-05",
+        "entities": 32,
+        "failures": 6,
+        "mean_probability": 0.04383312,
+        "brier": 0.18055222
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-06",
+        "entities": 48,
+        "failures": 5,
+        "mean_probability": 0.03161364,
+        "brier": 0.09988898
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-07",
+        "entities": 28,
+        "failures": 1,
+        "mean_probability": 0.03026579,
+        "brier": 0.03557061
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-08",
+        "entities": 26,
+        "failures": 0,
+        "mean_probability": 0.02543198,
+        "brier": 0.00083846
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-09",
+        "entities": 8,
+        "failures": 2,
+        "mean_probability": 0.01892404,
+        "brier": 0.2382848
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-10",
+        "entities": 10,
+        "failures": 0,
+        "mean_probability": 0.03230651,
+        "brier": 0.00123905
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-11",
+        "entities": 11,
+        "failures": 0,
+        "mean_probability": 0.02734973,
+        "brier": 0.0011475
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-12",
+        "entities": 7,
+        "failures": 0,
+        "mean_probability": 0.0333043,
+        "brier": 0.00134747
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-13",
+        "entities": 22,
+        "failures": 0,
+        "mean_probability": 0.023089,
+        "brier": 0.00073894
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-14",
+        "entities": 16,
+        "failures": 0,
+        "mean_probability": 0.02287589,
+        "brier": 0.00070354
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-15",
+        "entities": 34,
+        "failures": 1,
+        "mean_probability": 0.02806859,
+        "brier": 0.02810807
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-16",
+        "entities": 19,
+        "failures": 0,
+        "mean_probability": 0.02657569,
+        "brier": 0.00082168
+      },
+      {
+        "model": "boosting",
+        "grouping": "test_day",
+        "group": "2008-10-17",
+        "entities": 3,
+        "failures": 0,
+        "mean_probability": 0.04438954,
+        "brier": 0.00197913
+      },
+      {
+        "model": "boosting",
+        "grouping": "missingness",
+        "group": "At most 5% sensors missing",
+        "entities": 311,
+        "failures": 22,
+        "mean_probability": 0.0305246,
+        "brier": 0.06845965
+      },
+      {
+        "model": "boosting",
+        "grouping": "missingness",
+        "group": "More than 5% sensors missing",
+        "entities": 48,
+        "failures": 0,
+        "mean_probability": 0.02837741,
+        "brier": 0.00098451
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-01",
+        "entities": 17,
+        "failures": 1,
+        "mean_probability": 0.03097891,
+        "brier": 0.059837
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-02",
+        "entities": 35,
+        "failures": 5,
+        "mean_probability": 0.03196684,
+        "brier": 0.13616498
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-03",
+        "entities": 25,
+        "failures": 0,
+        "mean_probability": 0.02679011,
+        "brier": 0.00088362
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-04",
+        "entities": 18,
+        "failures": 1,
+        "mean_probability": 0.02623533,
+        "brier": 0.05469369
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-05",
+        "entities": 32,
+        "failures": 6,
+        "mean_probability": 0.04160246,
+        "brier": 0.17952485
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-06",
+        "entities": 48,
+        "failures": 5,
+        "mean_probability": 0.03178627,
+        "brier": 0.10008681
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-07",
+        "entities": 28,
+        "failures": 1,
+        "mean_probability": 0.02931296,
+        "brier": 0.03564288
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-08",
+        "entities": 26,
+        "failures": 0,
+        "mean_probability": 0.02426176,
+        "brier": 0.00077484
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-09",
+        "entities": 8,
+        "failures": 2,
+        "mean_probability": 0.01771079,
+        "brier": 0.2389824
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-10",
+        "entities": 10,
+        "failures": 0,
+        "mean_probability": 0.03100527,
+        "brier": 0.00119578
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-11",
+        "entities": 11,
+        "failures": 0,
+        "mean_probability": 0.02780939,
+        "brier": 0.00123479
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-12",
+        "entities": 7,
+        "failures": 0,
+        "mean_probability": 0.03327019,
+        "brier": 0.00133121
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-13",
+        "entities": 22,
+        "failures": 0,
+        "mean_probability": 0.02414715,
+        "brier": 0.00086896
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-14",
+        "entities": 16,
+        "failures": 0,
+        "mean_probability": 0.02394642,
+        "brier": 0.00078289
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-15",
+        "entities": 34,
+        "failures": 1,
+        "mean_probability": 0.02908167,
+        "brier": 0.02798591
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-16",
+        "entities": 19,
+        "failures": 0,
+        "mean_probability": 0.02860774,
+        "brier": 0.00097889
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "test_day",
+        "group": "2008-10-17",
+        "entities": 3,
+        "failures": 0,
+        "mean_probability": 0.0469545,
+        "brier": 0.0022277
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "missingness",
+        "group": "At most 5% sensors missing",
+        "entities": 311,
+        "failures": 22,
+        "mean_probability": 0.02976016,
+        "brier": 0.06836051
+      },
+      {
+        "model": "boosting_no_missing",
+        "grouping": "missingness",
+        "group": "More than 5% sensors missing",
+        "entities": 48,
+        "failures": 0,
+        "mean_probability": 0.02955727,
+        "brier": 0.00107778
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-01",
+        "entities": 17,
+        "failures": 1,
+        "mean_probability": 0.06788079,
+        "brier": 0.05544536
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-02",
+        "entities": 35,
+        "failures": 5,
+        "mean_probability": 0.06788079,
+        "brier": 0.12807043
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-03",
+        "entities": 25,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-04",
+        "entities": 18,
+        "failures": 1,
+        "mean_probability": 0.06788079,
+        "brier": 0.05262105
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-05",
+        "entities": 32,
+        "failures": 6,
+        "mean_probability": 0.06788079,
+        "brier": 0.1666525
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-06",
+        "entities": 48,
+        "failures": 5,
+        "mean_probability": 0.06788079,
+        "brier": 0.09463264
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-07",
+        "entities": 28,
+        "failures": 1,
+        "mean_probability": 0.06788079,
+        "brier": 0.03547346
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-08",
+        "entities": 26,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-09",
+        "entities": 8,
+        "failures": 2,
+        "mean_probability": 0.06788079,
+        "brier": 0.2206674
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-10",
+        "entities": 10,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-11",
+        "entities": 11,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-12",
+        "entities": 7,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-13",
+        "entities": 22,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-14",
+        "entities": 16,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-15",
+        "entities": 34,
+        "failures": 1,
+        "mean_probability": 0.06788079,
+        "brier": 0.03002658
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-16",
+        "entities": 19,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "test_day",
+        "group": "2008-10-17",
+        "entities": 3,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      },
+      {
+        "model": "prevalence",
+        "grouping": "missingness",
+        "group": "At most 5% sensors missing",
+        "entities": 311,
+        "failures": 22,
+        "mean_probability": 0.06788079,
+        "brier": 0.06574364
+      },
+      {
+        "model": "prevalence",
+        "grouping": "missingness",
+        "group": "More than 5% sensors missing",
+        "entities": 48,
+        "failures": 0,
+        "mean_probability": 0.06788079,
+        "brier": 0.0046078
+      }
+    ],
+    "sensor_stability": [
+      {
+        "sensor": "sensor_060",
+        "selection_frequency": 1.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.63526858,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_022",
+        "selection_frequency": 0.96666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.23308764,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_461",
+        "selection_frequency": 0.93333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.18694902,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_334",
+        "selection_frequency": 0.9,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.2174489,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_563",
+        "selection_frequency": 0.9,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.10988266,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_065",
+        "selection_frequency": 0.86666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.26882486,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_001",
+        "selection_frequency": 0.83333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.08797458,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_015",
+        "selection_frequency": 0.83333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.11816305,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_103",
+        "selection_frequency": 0.83333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.05554937,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_487",
+        "selection_frequency": 0.83333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.09335986,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_118",
+        "selection_frequency": 0.76666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.06261401,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_206",
+        "selection_frequency": 0.76666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.14131458,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_281",
+        "selection_frequency": 0.76666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.16295034,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_347",
+        "selection_frequency": 0.76666667,
+        "availability_frequency": 0.86666667,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": -0.03002684
+      },
+      {
+        "sensor": "sensor_478",
+        "selection_frequency": 0.76666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.07462288,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_585",
+        "selection_frequency": 0.76666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.14333782,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_346",
+        "selection_frequency": 0.73333333,
+        "availability_frequency": 0.86666667,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": -0.03002684
+      },
+      {
+        "sensor": "sensor_020",
+        "selection_frequency": 0.7,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.02742397,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_074",
+        "selection_frequency": 0.7,
+        "availability_frequency": 0.86666667,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.08129326,
+        "standardized_missingness_coefficient": -0.03002684
+      },
+      {
+        "sensor": "sensor_342",
+        "selection_frequency": 0.7,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.06619402,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_391",
+        "selection_frequency": 0.7,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.08314605,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_489",
+        "selection_frequency": 0.7,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.11508578,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_564",
+        "selection_frequency": 0.7,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.05542714,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_057",
+        "selection_frequency": 0.66666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.03132333,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_073",
+        "selection_frequency": 0.66666667,
+        "availability_frequency": 0.86666667,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": -0.03002684
+      },
+      {
+        "sensor": "sensor_144",
+        "selection_frequency": 0.66666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.09844748,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_173",
+        "selection_frequency": 0.66666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.04209181,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_175",
+        "selection_frequency": 0.66666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.04404107,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_226",
+        "selection_frequency": 0.66666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.07472206,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_578",
+        "selection_frequency": 0.66666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.12390825,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_064",
+        "selection_frequency": 0.63333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.11679637,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_087",
+        "selection_frequency": 0.63333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.03967659,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_426",
+        "selection_frequency": 0.63333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.1097237,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_100",
+        "selection_frequency": 0.6,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.11348478,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_139",
+        "selection_frequency": 0.6,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_302",
+        "selection_frequency": 0.6,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.0420631,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_446",
+        "selection_frequency": 0.6,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.09454008,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_486",
+        "selection_frequency": 0.6,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.04066492,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_091",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.10310078,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_130",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.11070958,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_178",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.013481,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_214",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.02402652,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_349",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_444",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.01250802,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_485",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.02692257,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_548",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_555",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_589",
+        "selection_frequency": 0.56666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.0801436,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_002",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_034",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.08089123,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_132",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.11926924,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_176",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.06282363,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_201",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_417",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_429",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_449",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.03155649,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_542",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.03928923,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_547",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_551",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_557",
+        "selection_frequency": 0.53333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_039",
+        "selection_frequency": 0.5,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_134",
+        "selection_frequency": 0.5,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.05547368,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_156",
+        "selection_frequency": 0.5,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_162",
+        "selection_frequency": 0.5,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.01017254,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_424",
+        "selection_frequency": 0.5,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.04190005,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_549",
+        "selection_frequency": 0.5,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_115",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 0.93333333,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.03655532,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_116",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.00154035,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_153",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_386",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_412",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.03826851,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_511",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_522",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 0.93333333,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.02973624,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_556",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_569",
+        "selection_frequency": 0.46666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_127",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.09586311,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_248",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.02134859,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_366",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_550",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_552",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_553",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_554",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_558",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_584",
+        "selection_frequency": 0.43333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_085",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_138",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_252",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.01541182,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_317",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_345",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.02098569,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_512",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.0019347,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_545",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_570",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_588",
+        "selection_frequency": 0.4,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_032",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_054",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_072",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_093",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_096",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_171",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_205",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.00409752,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_273",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_313",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_344",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.08022131,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_361",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_411",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_480",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_481",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.03642122,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_565",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_567",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_568",
+        "selection_frequency": 0.36666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_041",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_055",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_104",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_114",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_120",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_122",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_172",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.01384852,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_272",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_305",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.05261262,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_307",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.00907155,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_308",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_310",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_358",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_368",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_378",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_432",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_492",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_524",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.01005151,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_566",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_583",
+        "selection_frequency": 0.33333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_007",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.02650731,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_008",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_009",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_094",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_113",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_250",
+        "selection_frequency": 0.3,
+        "availability_frequency": 0.93333333,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.00955499,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_280",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_312",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_388",
+        "selection_frequency": 0.3,
+        "availability_frequency": 0.93333333,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_392",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.00912426,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_442",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_520",
+        "selection_frequency": 0.3,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_025",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_029",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_059",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_068",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_082",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_101",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_119",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_212",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_218",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.04134036,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_223",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_291",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_350",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.02752613,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_408",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_425",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_447",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.00364168,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_491",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_500",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_501",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_576",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_586",
+        "selection_frequency": 0.26666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_011",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_017",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_019",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_042",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_058",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_076",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_078",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_108",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_126",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_128",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_135",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_157",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.01013925,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_203",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_220",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_229",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_279",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_296",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_341",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_354",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_390",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_559",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_571",
+        "selection_frequency": 0.23333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_004",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_010",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_021",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_033",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_102",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_123",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_141",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_143",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.00939074,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_170",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_219",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_283",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_337",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_339",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_369",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_387",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_430",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_438",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_455",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_468",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_477",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": -0.08968177,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_483",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_494",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_495",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_590",
+        "selection_frequency": 0.2,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_003",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_028",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_031",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_045",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_063",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_066",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_081",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_095",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_121",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_131",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_137",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_161",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": true,
+        "standardized_measurement_coefficient": 0.01857703,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_189",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_217",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_256",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_332",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_414",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_441",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_458",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_469",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_474",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_490",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_572",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_574",
+        "selection_frequency": 0.16666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_016",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_024",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_077",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_089",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_125",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_133",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_152",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_160",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_186",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_196",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_197",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_209",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_215",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_275",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_282",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_292",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_304",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_319",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_336",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_416",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_428",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_456",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_473",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_475",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_476",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_488",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_528",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_587",
+        "selection_frequency": 0.13333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_030",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_046",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_056",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_071",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_079",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_080",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_083",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_084",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_088",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_090",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_105",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_107",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_109",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_129",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_136",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_146",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_155",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_163",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_167",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_169",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_184",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_224",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_225",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_240",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_251",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_271",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_274",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_303",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_309",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_311",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_324",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_333",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_355",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_362",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_364",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_409",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_410",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_418",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_434",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_484",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_497",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_521",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_540",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_543",
+        "selection_frequency": 0.1,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_005",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_013",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_018",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_035",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_037",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_044",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_092",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_099",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_117",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_174",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_182",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_183",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_188",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_200",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_202",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_208",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_222",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_239",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_249",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_268",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_269",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_278",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_287",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_288",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_298",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_321",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_322",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_377",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_393",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_413",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_419",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_420",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_433",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_439",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_440",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_470",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_471",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_472",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_496",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_498",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_541",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_561",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_575",
+        "selection_frequency": 0.06666667,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_012",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_023",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_026",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_036",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_038",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_048",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_049",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_051",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_052",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_061",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_062",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_106",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_145",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_147",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_149",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_154",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_164",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_168",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_177",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_185",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_198",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_204",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_216",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_228",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_254",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_255",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_270",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_276",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_286",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_297",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_306",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_318",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_325",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_335",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_351",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_353",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_357",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_363",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_421",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_427",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_431",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_435",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_445",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_448",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_454",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_457",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_460",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_526",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_544",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_562",
+        "selection_frequency": 0.03333333,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_027",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_040",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_047",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_067",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_069",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_097",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_124",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_140",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_148",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_151",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_165",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_166",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_181",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_199",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_211",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_213",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_253",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_284",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_289",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_290",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_295",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_299",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_300",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_301",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_320",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_338",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_340",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_352",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_356",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_360",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_367",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_389",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_394",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_406",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_407",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_422",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_436",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_437",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_443",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_453",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_523",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_525",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_527",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_546",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_560",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_573",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      },
+      {
+        "sensor": "sensor_577",
+        "selection_frequency": 0.0,
+        "availability_frequency": 1.0,
+        "selected_in_final": false,
+        "standardized_measurement_coefficient": 0.0,
+        "standardized_missingness_coefficient": 0.0
+      }
+    ],
+    "stability_runs": [
+      {
+        "replicate": 1,
+        "selected_sensors": 114,
+        "available_sensors": 440,
+        "jaccard_to_final": 0.31506849,
+        "iterations": 770
+      },
+      {
+        "replicate": 2,
+        "selected_sensors": 72,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.31578947,
+        "iterations": 1511
+      },
+      {
+        "replicate": 3,
+        "selected_sensors": 103,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.37121212,
+        "iterations": 1246
+      },
+      {
+        "replicate": 4,
+        "selected_sensors": 115,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.29530201,
+        "iterations": 472
+      },
+      {
+        "replicate": 5,
+        "selected_sensors": 121,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.38194444,
+        "iterations": 1279
+      },
+      {
+        "replicate": 6,
+        "selected_sensors": 80,
+        "available_sensors": 440,
+        "jaccard_to_final": 0.25396825,
+        "iterations": 772
+      },
+      {
+        "replicate": 7,
+        "selected_sensors": 87,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.35245902,
+        "iterations": 648
+      },
+      {
+        "replicate": 8,
+        "selected_sensors": 107,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.36029412,
+        "iterations": 499
+      },
+      {
+        "replicate": 9,
+        "selected_sensors": 97,
+        "available_sensors": 440,
+        "jaccard_to_final": 0.30597015,
+        "iterations": 1125
+      },
+      {
+        "replicate": 10,
+        "selected_sensors": 109,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.40601504,
+        "iterations": 1279
+      },
+      {
+        "replicate": 11,
+        "selected_sensors": 91,
+        "available_sensors": 440,
+        "jaccard_to_final": 0.24264706,
+        "iterations": 925
+      },
+      {
+        "replicate": 12,
+        "selected_sensors": 129,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.30188679,
+        "iterations": 1129
+      },
+      {
+        "replicate": 13,
+        "selected_sensors": 120,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.33783784,
+        "iterations": 934
+      },
+      {
+        "replicate": 14,
+        "selected_sensors": 97,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.33587786,
+        "iterations": 524
+      },
+      {
+        "replicate": 15,
+        "selected_sensors": 83,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.27777778,
+        "iterations": 975
+      },
+      {
+        "replicate": 16,
+        "selected_sensors": 119,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.27096774,
+        "iterations": 749
+      },
+      {
+        "replicate": 17,
+        "selected_sensors": 109,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.32624113,
+        "iterations": 1036
+      },
+      {
+        "replicate": 18,
+        "selected_sensors": 102,
+        "available_sensors": 440,
+        "jaccard_to_final": 0.32352941,
+        "iterations": 1481
+      },
+      {
+        "replicate": 19,
+        "selected_sensors": 83,
+        "available_sensors": 440,
+        "jaccard_to_final": 0.2983871,
+        "iterations": 934
+      },
+      {
+        "replicate": 20,
+        "selected_sensors": 120,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.30263158,
+        "iterations": 723
+      },
+      {
+        "replicate": 21,
+        "selected_sensors": 109,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.34532374,
+        "iterations": 643
+      },
+      {
+        "replicate": 22,
+        "selected_sensors": 98,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.408,
+        "iterations": 891
+      },
+      {
+        "replicate": 23,
+        "selected_sensors": 110,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.34285714,
+        "iterations": 889
+      },
+      {
+        "replicate": 24,
+        "selected_sensors": 112,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.37681159,
+        "iterations": 801
+      },
+      {
+        "replicate": 25,
+        "selected_sensors": 95,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.29104478,
+        "iterations": 688
+      },
+      {
+        "replicate": 26,
+        "selected_sensors": 80,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.32773109,
+        "iterations": 829
+      },
+      {
+        "replicate": 27,
+        "selected_sensors": 93,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.25735294,
+        "iterations": 351
+      },
+      {
+        "replicate": 28,
+        "selected_sensors": 91,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.352,
+        "iterations": 1002
+      },
+      {
+        "replicate": 29,
+        "selected_sensors": 126,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.35099338,
+        "iterations": 1244
+      },
+      {
+        "replicate": 30,
+        "selected_sensors": 124,
+        "available_sensors": 444,
+        "jaccard_to_final": 0.32026144,
+        "iterations": 776
+      }
+    ]
+  },
+  "software": {
+    "python": "3.11.16",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "sklearn": "1.7.2",
+    "seed": 20260929
+  }
+}
