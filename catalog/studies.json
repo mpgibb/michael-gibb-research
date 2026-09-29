@@ -104,7 +104,7 @@
       "coverage": "Anonymized randomized advertising experiments",
       "limitation": "Anonymization and nonuniform subsampling limit recovery of original population lift; use documented release."
     },
-    "execution_status": "planned",
+    "execution_status": "data_ready",
     "publication_status": "unpublished",
     "result_path": null,
     "code_url": null,

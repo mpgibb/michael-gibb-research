@@ -1,6 +1,6 @@
 # S04 — Incremental advertising under a fixed contact budget
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: corrected data inspected and evaluation protocol frozen. No evaluated finding is claimed.
 
 ## Decision
 
@@ -30,4 +30,6 @@ A budget slider updates the targeting frontier, estimated incremental conversion
 
 The original release had leakage; privacy subsampling prevents recovery of original advertiser economics. Confirm identification for the chosen release and label all effects as benchmark-population estimates, never advertiser ROI.
 
-There is no runnable study or result artifact yet. The catalog records the next verified stage.
+## Reproduce
+
+Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S04/study.py`. The pinned publisher download and all individual records stay in the external S04 cache. See [DATA.md](DATA.md) for access and sampling limits, and [PROTOCOL.md](PROTOCOL.md) for the fixed comparisons. A result is published only after execution and checks.
