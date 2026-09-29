@@ -2,9 +2,11 @@
 
 Research by Michael P. Gibb, Ph.D. Public portfolio: [michaelpgibb.com/research](https://michaelpgibb.com/research).
 
-The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04, S58, S43, S13, S31 and S03 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. S01, S07 and S22 have source-access or reuse dependencies. The other 48 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
+The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04, S58, S43, S13, S31, S03 and S47 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. S01, S07 and S22 have source-access or reuse dependencies. The other 47 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
 
 ## Evaluated research
+
+- [S47 — Telecom service-friction signals](studies/S47): grouped evaluation favors boosting and finds useful complaint/failure signals; a prospective randomized recovery plan remains separate from measured prediction.
 
 - [S03 — Customer return forecasting](studies/S03): BG/NBD beats the boosted challenger on the primary count score, but seasonal calibration reverses. Contact economics remain explicitly assumed; no campaign effect is measured.
 

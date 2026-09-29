@@ -1,6 +1,8 @@
 # S47 — Service-friction signals and a three-month churn planning window
 
-Status: data ready. Official source and repeated-profile audit are complete; protocol and runnable comparison are frozen before fitting. No evaluated result is claimed.
+Status: evaluated. Run `S47-a0ada992-696c3a18` compares 624 final records, 561 profiles and 94 churn labels. Core boosting log loss is 0.0981 versus additive 0.1576; paired difference −0.0595 (95% interval −0.0826 to −0.0347). At 124-record capacity it identifies 90 observed churn outcomes. No retention benefit is measured.
+
+[Executive summary and report](REPORT.md) · [Aggregate results](results/result.json) · [Interactive case study](https://michaelpgibb.com/research/s47-service-friction-signals-and-a-three-month-churn-planning-window)
 
 ## Decision
 

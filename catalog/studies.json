@@ -1308,11 +1308,11 @@
       "coverage": "Real customer usage, complaints and churn observations",
       "limitation": "Small single-company sample; establish feature/label timing before modeling."
     },
-    "execution_status": "data_ready",
-    "publication_status": "unpublished",
-    "result_path": null,
+    "execution_status": "evaluated",
+    "publication_status": "published",
+    "result_path": "studies/S47/results/result.json",
     "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S47",
-    "published_url": null,
+    "published_url": "https://michaelpgibb.com/research/s47-service-friction-signals-and-a-three-month-churn-planning-window",
     "updated": "2026-09-29"
   },
   {
