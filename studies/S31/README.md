@@ -1,6 +1,6 @@
 # S31 — Insurance pricing: interpretable structure versus nonlinear accuracy
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: data ready; frozen protocol and runnable analysis prepared. No model result is claimed before execution.
 
 ## Decision
 
@@ -8,7 +8,7 @@ An insurance analytics team needs accurate expected-loss estimates that remain u
 
 ## Proposed data
 
-[freMTPL2 frequency and severity](https://dutangc.github.io/CASdatasets/reference/freMTPL.html) — CASdatasets / actuarial research contributors. Actual files, release and publication rights require inspection before evaluation.
+[freMTPL2 frequency and severity](https://dutangc.github.io/CASdatasets/reference/freMTPL.html) — CASdatasets / actuarial research contributors. Archived CASdatasets 1.2-0 is verified; actual files, reconciliation and reuse details are in DATA.md.
 
 ## Research design
 
@@ -30,4 +30,4 @@ An actuarial model explorer switches model class and portfolio segment. It decom
 
 Historical French motor data do not validate a current insurance rate filing. Pure premium is expected insured loss, not the final customer price; regulatory and deployment questions are outside the benchmark.
 
-There is no runnable study or result artifact yet. The catalog records the next verified stage.
+Run `uv sync --frozen`, then `uv run python -W error studies/S31/study.py`. Raw files and private predictions use RESEARCH_DATA_DIR or the external user cache. PROTOCOL.md freezes targets, splits, settings and uncertainty before fitting. Result artifacts will appear only after a successful evaluation.

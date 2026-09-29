@@ -1,0 +1,22 @@
+{
+  "evaluated_on": "2026-09-29",
+  "seed": 310927,
+  "source_url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/222040",
+  "archive_sha256": "1e141502a3477b4890a7be989b10fe6c4503170a4b846d2ba6c953763c0c7284",
+  "archive_md5": "830ed0ba1bcbefe18e8cf66b2fb6d63c",
+  "files": {
+    "freMTPL2freq": "61c079d31e76a4f09045326ccdbcab0180c32c90f7f42d7bb05192700797cb1f",
+    "freMTPL2sev": "3bcf875b67ad23268698ad3e330365c4a4f41918e125f40d3a325786fa40e793"
+  },
+  "split_salt": "S31-policy-20260929:",
+  "development_fraction": 0.6,
+  "validation_end_fraction": 0.8,
+  "stress_region": "Ile-de-France",
+  "claim_cap_eur": 50000,
+  "tweedie_power": 1.5,
+  "candidates": {"glm": [0.0001, 0.01], "tweedie": [0.0001, 0.01], "boosting": [7, 15]},
+  "bootstrap_repetitions": 500,
+  "segment_bootstrap_repetitions": 250,
+  "minimum_segment_policies": 500,
+  "expense_loadings": [0, 0.1, 0.2, 0.3, 0.4, 0.5]
+}
