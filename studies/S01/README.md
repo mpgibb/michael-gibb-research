@@ -1,6 +1,8 @@
 # S01 — Customer value and promotion concentration
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: blocked as of September 29, 2026. The publisher source page and download terms have been inspected; authorized terms acceptance and clarification of aggregate publication rights remain prerequisites. No data or model results are claimed.
+
+Next action: complete the official access form after terms authorization, then inspect the delivered documentation, actual provenance and permitted use. The current publisher describes Source Files as representations inspired by real-world data; an uninspected download must not be presented as raw observed household records.
 
 ## Decision
 

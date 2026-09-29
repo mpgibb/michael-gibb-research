@@ -17,10 +17,10 @@
       "name": "dunnhumby — The Complete Journey",
       "publisher": "dunnhumby",
       "source_url": "https://www.dunnhumby.com/source-files/",
-      "coverage": "Real household transactions; historical two-year panel",
+      "coverage": "Publisher-described historical household transaction representation; actual files and provenance not yet inspected",
       "limitation": "Frequent-shopper sample; observational promotion data do not establish causal lift."
     },
-    "execution_status": "planned",
+    "execution_status": "blocked",
     "publication_status": "unpublished",
     "result_path": null,
     "code_url": null,
@@ -76,11 +76,11 @@
       "coverage": "Real UK retailer transactions; 2009–2011",
       "limitation": "Older single-retailer data; missing customer IDs and cancellations require careful handling."
     },
-    "execution_status": "data_ready",
-    "publication_status": "unpublished",
-    "result_path": null,
+    "execution_status": "evaluated",
+    "publication_status": "published",
+    "result_path": "studies/S03/results/result.json",
     "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S03",
-    "published_url": null,
+    "published_url": "https://michaelpgibb.com/research/s03-when-does-a-customer-become-worth-winning-back",
     "updated": "2026-09-29"
   },
   {

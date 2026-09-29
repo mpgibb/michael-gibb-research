@@ -1,6 +1,8 @@
 # S03 — When does a customer become worth winning back?
 
-Status: data ready. Publisher files and transaction accounting are audited; the frozen protocol is ready to execute. No fitted result is claimed.
+Status: evaluated. Run `S03-2f7d21cd-572e3627` compares 14,388 final customer-window forecasts across 5,155 customers. BG/NBD beats hurdle boosting on primary 90-day count deviance: 0.990 versus 1.072, paired difference +0.082 (95% interval 0.068–0.096). Seasonal calibration still shifts substantially; no win-back effect is measured.
+
+[Executive summary and evaluation report](REPORT.md) · [Aggregate results](results/result.json) · [Interactive case study](https://michaelpgibb.com/research/s03-when-does-a-customer-become-worth-winning-back)
 
 ## Decision
 
