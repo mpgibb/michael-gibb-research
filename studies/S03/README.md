@@ -1,6 +1,6 @@
 # S03 — When does a customer become worth winning back?
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: data ready. Publisher files and transaction accounting are audited; the frozen protocol is ready to execute. No fitted result is claimed.
 
 ## Decision
 
@@ -8,7 +8,7 @@ An e-commerce team needs to distinguish temporarily inactive buyers from custome
 
 ## Proposed data
 
-[Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) — UCI / original retailer data donor. Actual files, release and publication rights require inspection before evaluation.
+[Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) — UCI / original retailer data donor. Official workbook and CC BY 4.0 attribution are documented in [DATA.md](DATA.md).
 
 ## Research design
 
@@ -30,4 +30,6 @@ A customer-cohort explorer accepts recency, frequency, purchase horizon and assu
 
 The data contain no randomized win-back intervention. Long-term value extrapolation is assumption-sensitive and concerns an older single retailer; do not present revenue as profit.
 
-There is no runnable study or result artifact yet. The catalog records the next verified stage.
+## Reproduce
+
+Install the locked environment with `uv sync --frozen`, set `RESEARCH_DATA_DIR` to a private data directory, then run `uv run python -W error studies/S03/study.py`. Commit the protocol and analysis source before running; provenance rejects modified analysis files. [PROTOCOL.md](PROTOCOL.md) records timing, model selection, intervals and the prespecified accounting sensitivity. No raw records or customer-level predictions belong in the public repository.

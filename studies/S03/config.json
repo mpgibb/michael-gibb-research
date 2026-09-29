@@ -1,0 +1,22 @@
+{
+  "evaluated_on": "2026-09-29",
+  "seed": 30929,
+  "source_url": "https://archive.ics.uci.edu/static/public/502/online+retail+ii.zip",
+  "archive_sha256": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb",
+  "xlsx_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "development_cutoffs": ["2010-03-01", "2010-06-01", "2010-09-01"],
+  "validation_cutoff": "2010-12-01",
+  "final_cutoffs": ["2011-03-01", "2011-06-01", "2011-09-01"],
+  "horizons_days": [30, 60, 90],
+  "primary_horizon": 90,
+  "minimum_history_days": 30,
+  "boosting_leaves": [7, 15],
+  "boosting_iterations": 150,
+  "bootstrap_repetitions": 1000,
+  "predictive_draws": 2000,
+  "interval_level": 0.9,
+  "cohort_minimum": 50,
+  "contact_cost_gbp": [0, 0.5, 1, 2, 5],
+  "assumed_margin": [0.1, 0.2, 0.3, 0.4, 0.5],
+  "quadrature_nodes": 64
+}

@@ -76,10 +76,10 @@
       "coverage": "Real UK retailer transactions; 2009–2011",
       "limitation": "Older single-retailer data; missing customer IDs and cancellations require careful handling."
     },
-    "execution_status": "planned",
+    "execution_status": "data_ready",
     "publication_status": "unpublished",
     "result_path": null,
-    "code_url": null,
+    "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S03",
     "published_url": null,
     "updated": "2026-09-29"
   },
