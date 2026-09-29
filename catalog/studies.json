@@ -860,11 +860,11 @@
       "coverage": "Real French motor-insurance policies and claims",
       "limitation": "Historical single-market portfolio; inspect exposure, duplicates and claim aggregation before joining."
     },
-    "execution_status": "data_ready",
-    "publication_status": "unpublished",
-    "result_path": null,
-    "code_url": null,
-    "published_url": null,
+    "execution_status": "evaluated",
+    "publication_status": "published",
+    "result_path": "studies/S31/results/result.json",
+    "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S31",
+    "published_url": "https://michaelpgibb.com/research/s31-insurance-pricing-interpretable-structure-versus-nonlinear-accuracy",
     "updated": "2026-09-29"
   },
   {

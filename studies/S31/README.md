@@ -1,6 +1,8 @@
 # S31 — Insurance pricing: interpretable structure versus nonlinear accuracy
 
-Status: data ready; frozen protocol and runnable analysis prepared. No model result is claimed before execution.
+Status: evaluated public-data study. Run `S31-02c309de-1e141502`. Independent technical review is pending.
+
+On 136,271 held-out policies, boosting does not establish a clear full-loss deviance advantage over interpretable frequency–severity regression: difference −0.531 (95% interval −1.626 to +0.811). Observed loss is €147.76 per policy-year; boosting predicts €138.35. Capped-target and geographic-stress gains remain separate findings. See [the executive summary and full report](REPORT.md).
 
 ## Decision
 
@@ -30,4 +32,4 @@ An actuarial model explorer switches model class and portfolio segment. It decom
 
 Historical French motor data do not validate a current insurance rate filing. Pure premium is expected insured loss, not the final customer price; regulatory and deployment questions are outside the benchmark.
 
-Run `uv sync --frozen`, then `uv run python -W error studies/S31/study.py`. Raw files and private predictions use RESEARCH_DATA_DIR or the external user cache. PROTOCOL.md freezes targets, splits, settings and uncertainty before fitting. Result artifacts will appear only after a successful evaluation.
+Run `uv sync --frozen`, then `uv run python -W error studies/S31/study.py`. Raw files and private predictions use RESEARCH_DATA_DIR or the external user cache. PROTOCOL.md freezes targets, splits, settings and uncertainty before fitting. [Aggregate results](results/result.json) and report figures come from the executed evaluation.
