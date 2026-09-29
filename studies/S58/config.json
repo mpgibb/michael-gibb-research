@@ -1,0 +1,10 @@
+{
+ "study_id":"S58","seed":20260929,"evaluated_on":"2026-09-29",
+ "source_url":"https://ndownloader.figshare.com/files/24044117",
+ "sha256":"183c5e5189282779c811c78c33ff936351b3dd201165d612211fc220936f8249",
+ "bytes":29658747,"applications":31509,"events":1202267,
+ "prefix_lengths":[5,10,20],"horizon":30,"iterations":120,"candidate_leaves":[7,15],
+ "bootstrap_repetitions":500,"capacities":[0.1,0.2,0.3,0.5,1],
+ "terminal_statuses":["A_Pending","A_Denied","A_Cancelled"],
+ "file_cutoff":"2017-02-01T14:11:03.499Z"
+}

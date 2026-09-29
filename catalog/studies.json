@@ -1616,10 +1616,10 @@
       "coverage": "Real loan-application process event logs; 2016–2017",
       "limitation": "One institution and historical process; automation benefits require a separate intervention evaluation."
     },
-    "execution_status": "planned",
+    "execution_status": "data_ready",
     "publication_status": "unpublished",
     "result_path": null,
-    "code_url": null,
+    "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S58",
     "published_url": null,
     "updated": "2026-09-29"
   },

@@ -1,6 +1,6 @@
 # S58 — Where business workflows accumulate delay
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: data ready. The complete source and application/offer grain are inspected; the survival protocol is frozen before fitting. No finding is claimed yet.
 
 ## Decision
 
@@ -30,4 +30,6 @@ Visitors click a workflow stage, choose a case-prefix length and vary a hypothet
 
 Observed delays do not prove employee inefficiency or the causal effect of automation. Missing service-time/resource detail limits staffing simulation; business savings cannot be inferred from elapsed time alone.
 
-There is no runnable study or result artifact yet. The catalog records the next verified stage.
+## Reproduce
+
+Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S58/study.py`. Raw events remain external. See [DATA.md](DATA.md) for source and publication conditions and [PROTOCOL.md](PROTOCOL.md) for the exact endpoint, cohorts and censoring rules. Publication remains separate from execution until evaluation and required source notification are complete.
