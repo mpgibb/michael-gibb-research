@@ -1,6 +1,6 @@
 # S02 — Inventory planning with coherent demand uncertainty
 
-Status: data ready. The publisher files have been inspected and verified. The evaluation protocol is frozen before model fitting; no finding is claimed.
+Status: evaluated on the official M5 files. Run `S02-5145fea6-e598f30c`. Global quantile boosting reduced the prespecified cycle-total forecast error by 17.4% versus repeating the previous cycle. See [REPORT.md](REPORT.md) for the evidence, uncertainty and scenario limitations.
 
 ## Decision
 
@@ -32,4 +32,4 @@ Recorded sales are not unconstrained demand. True stock availability and economi
 
 ## Reproduce
 
-Install the locked environment with `uv sync --frozen`. Place the four official files described in DATA.md in an external directory under `S02`. Run `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S02/study.py`. The command validates inputs, executes the frozen comparisons and writes a schema-validated result. [PROTOCOL.md](PROTOCOL.md) specifies the split, tuning, uncertainty and simulator. Results remain unpublished until execution and verification.
+Install the locked environment with `uv sync --frozen`. Place the four official files described in DATA.md in an external directory under `S02`. Run `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S02/study.py`. The command validates inputs, executes the frozen comparisons and writes a schema-validated result. [PROTOCOL.md](PROTOCOL.md) specifies the split, tuning, uncertainty and simulator. Run `uv run python scripts/report_s02.py` to export the report and figures from the saved result.

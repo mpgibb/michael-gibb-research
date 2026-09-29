@@ -48,10 +48,10 @@
       "coverage": "Real daily product-store sales; historical benchmark",
       "limitation": "Sales are not unconstrained demand; inventory costs and stockouts are not fully observed."
     },
-    "execution_status": "data_ready",
-    "publication_status": "unpublished",
-    "result_path": null,
-    "code_url": null,
+    "execution_status": "evaluated",
+    "publication_status": "draft",
+    "result_path": "studies/S02/results/result.json",
+    "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S02",
     "published_url": null,
     "updated": "2026-09-29"
   },

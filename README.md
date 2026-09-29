@@ -2,9 +2,11 @@
 
 Research by Michael P. Gibb, Ph.D. Public portfolio: [michaelpgibb.com/research](https://michaelpgibb.com/research).
 
-The catalog accounts for 60 study designs across 20 industries. **S28 has an executed public-data evaluation. The other 59 are planned and have no completed findings.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
+The catalog accounts for 60 study designs across 20 industries. **S28 and S02 have executed public-data evaluations. The other 58 have no completed findings.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
 
 ## Evaluated research
+
+- [S02 — Inventory planning](studies/S02): a 210-series M5 forecast comparison and explicit inventory replay. Better measured sales forecasts reduce assumed cost in the tested scenarios, but service and cost are different objectives; no realized savings are claimed.
 
 - [S28 — Sales contact prioritization](studies/S28): a chronological UCI Bank Marketing evaluation. A simple history-and-recency rule has lower final-period log loss than the logistic model selected during development. This is response prediction among previously observed contacts, not proof that calling causes additional subscriptions.
 
