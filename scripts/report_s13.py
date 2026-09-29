@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 ROOT=Path(__file__).resolve().parents[1];HERE=ROOT/'studies/S13';r=json.loads((HERE/'results/result.json').read_text());t=r['tables'];d=t['primary_difference']
 labels={m['id']:m['label'] for m in r['models']};short={'elastic_net':'Sparse logistic','pca_monitor':'PCA monitor','boosting':'Boosting','boosting_no_missing':'No missingness indicators'}
 colors={'elastic_net':'#0a192f','pca_monitor':'#64748b','boosting':'#925322','boosting_no_missing':'#94a3b8'}
-plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'svg.fonttype':'none','axes.spines.top':False,'axes.spines.right':False})
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'svg.fonttype':'none','svg.hashsalt':r['run_id'],'axes.spines.top':False,'axes.spines.right':False})
 fig,ax=plt.subplots(figsize=(7.8,4.4))
 for model in short:
  rows=[v for v in t['capacity'] if v['model']==model];ax.plot([100*v['capacity'] for v in rows],[v['detected_failures'] for v in rows],label=short[model],color=colors[model],marker='o',markersize=3)
@@ -79,4 +79,6 @@ Run `uv sync --frozen`, `uv run python -W error studies/S13/study.py`, then `uv 
 
 McCann, M. & Johnston, A. (2008). [SECOM](https://archive.ics.uci.edu/dataset/179/secom), UCI Machine Learning Repository, [doi:10.24432/C54305](https://doi.org/10.24432/C54305). Source data: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This study transforms the source into original aggregate analyses; no publisher endorsement is implied.
 ''')
+for path in (HERE/'results').glob('*.svg'):
+ path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
 print('Generated S13 report and two figures from',r['run_id'])
