@@ -24,3 +24,6 @@ class SensorTests(unittest.TestCase):
   for ix in M.cluster_draws(days,10,19):self.assertEqual(np.sum(ix==0),np.sum(ix==1));self.assertEqual(np.sum(ix==2),np.sum(ix==4))
  def test_pca_only_learns_pass_subspace(self):
   rng=np.random.default_rng(4);x=rng.normal(size=(80,8));y=np.r_[np.zeros(60),np.ones(20)];m=M.PCAMonitor(3).fit(x,y);self.assertEqual(m.pca.n_samples_,60);self.assertEqual(m.predict_proba(x).shape,(80,2))
+
+ def test_intercept_only_fit_matches_training_prevalence(self):
+  rng=np.random.default_rng(14);x=rng.normal(size=(100,12));y=np.r_[np.zeros(90),np.ones(10)];m=M.make_model('elastic_net',1e-5).fit(x,y);self.assertTrue(np.all(m.named_steps['model'].coef_==0));self.assertAlmostEqual(m.predict_proba(x)[:,1].mean(),.1,places=12)

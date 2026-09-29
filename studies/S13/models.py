@@ -28,6 +28,15 @@ class SensorProcessor(BaseEstimator,TransformerMixin):
   return np.column_stack([values,np.isnan(a[:,self.missing_columns_]).astype(float)])
  def transform(self,x):return self.scale_.transform(self._raw(x)[:,self.keep_])
 
+class CheckedLogistic(LogisticRegression):
+ def fit(self,x,y,sample_weight=None):
+  super().fit(x,y,sample_weight=sample_weight)
+  if np.all(self.coef_==0):
+   rate=np.average(y,weights=sample_weight)
+   if not 0<rate<1:raise ValueError('Both outcomes required')
+   self.intercept_=np.array([np.log(rate/(1-rate))])
+  return self
+
 class PCAMonitor:
  def __init__(self,n_components):self.n_components=n_components
  def fit(self,x,y):
@@ -42,7 +51,7 @@ class PCAMonitor:
 def make_model(family,setting,indicators=True):
  if family=='pca_monitor':return PCAMonitor(int(setting))
  if family=='elastic_net':
-  clf=LogisticRegression(C=float(setting),penalty='elasticnet',l1_ratio=CONFIG['elastic_net_l1_ratio'],solver='saga',max_iter=CONFIG['elastic_net_max_iterations'],tol=1e-4,random_state=CONFIG['seed'])
+  clf=CheckedLogistic(C=float(setting),penalty='elasticnet',l1_ratio=CONFIG['elastic_net_l1_ratio'],solver='saga',max_iter=CONFIG['elastic_net_max_iterations'],tol=1e-4,random_state=CONFIG['seed'])
  elif family=='boosting':
   clf=HistGradientBoostingClassifier(max_leaf_nodes=int(setting),max_iter=CONFIG['boosting_iterations'],learning_rate=CONFIG['boosting_learning_rate'],min_samples_leaf=CONFIG['boosting_min_samples_leaf'],l2_regularization=CONFIG['boosting_l2'],early_stopping=False,random_state=CONFIG['seed'])
  else:raise ValueError('Unknown model')
