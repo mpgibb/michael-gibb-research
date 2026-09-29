@@ -1,0 +1,279 @@
+{
+  "study_id": "S43",
+  "seed": 20260929,
+  "evaluated_on": "2026-09-29",
+  "snapshot_url": "https://ccao-data-public-us-east-1.s3.amazonaws.com/models/inputs/res/2024/run_id=2024-03-17-stupefied-maya/assessment_data.parquet",
+  "snapshot_sha256": "86877d098101ca0c6ec4e77b9b0f5d5e3200e2b3fca6fe2c1a92e9044b3e9a9b",
+  "snapshot_last_modified": "2024-04-10T19:06:17Z",
+  "sales_manifest_sha256": "91674c7f8a74e1b4c767426482d4d4124f5733ec268559d44a91fde9759af41c",
+  "monthly_sales": [
+    {
+      "file": "sales-2024-05.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2024-05-01T00:00:00' AND sale_date < '2024-06-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1116283,
+      "rows": 7575,
+      "sha256": "1dd7837613613432856a090265a9e855b6b3fa1aec902150e1f68df71cf43393"
+    },
+    {
+      "file": "sales-2024-06.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2024-06-01T00:00:00' AND sale_date < '2024-07-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1071435,
+      "rows": 7271,
+      "sha256": "c5fadba3758dbd3bfc84ed136528f5214765f2a2fca6accea654800bab876a51"
+    },
+    {
+      "file": "sales-2024-07.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2024-07-01T00:00:00' AND sale_date < '2024-08-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1090350,
+      "rows": 7398,
+      "sha256": "368f03352811537e55aacdc1a756feb3a20668d2886ca3f3a2c33c1b688b36db"
+    },
+    {
+      "file": "sales-2024-08.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2024-08-01T00:00:00' AND sale_date < '2024-09-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1074978,
+      "rows": 7299,
+      "sha256": "eab96a81179789c29036f0be07b818cafbaafebe3cb6c28dffc7a1e1aa5b7440"
+    },
+    {
+      "file": "sales-2024-09.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2024-09-01T00:00:00' AND sale_date < '2024-10-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 908853,
+      "rows": 6169,
+      "sha256": "8921ff8f6230f079a03579c565a364b0d30f178a6ba1993214fe64ea23d27f59"
+    },
+    {
+      "file": "sales-2024-10.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2024-10-01T00:00:00' AND sale_date < '2024-11-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 961976,
+      "rows": 6530,
+      "sha256": "87f31cdac493e2e3bcaa2091433b9cdb71eb351043dff21bd2ed8439ca5465df"
+    },
+    {
+      "file": "sales-2024-11.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2024-11-01T00:00:00' AND sale_date < '2024-12-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 812928,
+      "rows": 5518,
+      "sha256": "e7e192e42ddbcd0c78eacfa59ab299583f34fe73b9a3e13869dc71004966c461"
+    },
+    {
+      "file": "sales-2024-12.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2024-12-01T00:00:00' AND sale_date < '2025-01-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 847461,
+      "rows": 5756,
+      "sha256": "2a32beae2c71a6fb8e0faafc77fac034697fc0e352d2ee8ca690fe4bfe69ada0"
+    },
+    {
+      "file": "sales-2025-01.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-01-01T00:00:00' AND sale_date < '2025-02-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 720880,
+      "rows": 4790,
+      "sha256": "855b9611d5178b215f9a824adf52277286bf00a7e402c90f2475c1c18c3e0917"
+    },
+    {
+      "file": "sales-2025-02.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-02-01T00:00:00' AND sale_date < '2025-03-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 758699,
+      "rows": 5045,
+      "sha256": "e85b73a95b61c52e6f124faddfaad4bbfee4519edfc0e88e7bac13c09c6a6dc9"
+    },
+    {
+      "file": "sales-2025-03.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-03-01T00:00:00' AND sale_date < '2025-04-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 944548,
+      "rows": 6251,
+      "sha256": "1071a38867aeb1ef599608e18de6e9aee67b9f3cfc3f700ff562f490f0e5ea80"
+    },
+    {
+      "file": "sales-2025-04.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-04-01T00:00:00' AND sale_date < '2025-05-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1125306,
+      "rows": 7523,
+      "sha256": "88aaaf7d0f91767a899fb83ff2c3ff53007d5dfcd52c7055542038973ac5689b"
+    },
+    {
+      "file": "sales-2025-05.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-05-01T00:00:00' AND sale_date < '2025-06-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1150959,
+      "rows": 7690,
+      "sha256": "31428a2035d03b996ab34b8902aeccd31a6c1178ef31159c8a303ea4a76fadcc"
+    },
+    {
+      "file": "sales-2025-06.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-06-01T00:00:00' AND sale_date < '2025-07-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1183651,
+      "rows": 7848,
+      "sha256": "4811d71c3ec6dc79b694ac220a3d15e84a589283f07850bbe9e936fdb7e21a1c"
+    },
+    {
+      "file": "sales-2025-07.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-07-01T00:00:00' AND sale_date < '2025-08-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1143042,
+      "rows": 7621,
+      "sha256": "51689c1cf032483ea8f618ac696c4aba12bee8927591e444322a9927081f097f"
+    },
+    {
+      "file": "sales-2025-08.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-08-01T00:00:00' AND sale_date < '2025-09-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1042736,
+      "rows": 6977,
+      "sha256": "93d31f79c4017e00aec8d381db8e7dfc923bcc553fd9b10c6f2fcb202e06c711"
+    },
+    {
+      "file": "sales-2025-09.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-09-01T00:00:00' AND sale_date < '2025-10-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 998836,
+      "rows": 6675,
+      "sha256": "278dc6e071926bb6cf6a15bdd5580ad6dc314a8ddffc95f2d151eb377a35dedd"
+    },
+    {
+      "file": "sales-2025-10.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-10-01T00:00:00' AND sale_date < '2025-11-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 1011550,
+      "rows": 6728,
+      "sha256": "af4016a54851490ffd4211a9d68e2275e46e3f7ef1e8989fceb6de0f1ef3661f"
+    },
+    {
+      "file": "sales-2025-11.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-11-01T00:00:00' AND sale_date < '2025-12-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 858300,
+      "rows": 5721,
+      "sha256": "1ea8d96f491200351d5844f9e279fde7694de58e54b74e12e3cce71e6e84e9ef"
+    },
+    {
+      "file": "sales-2025-12.csv",
+      "url": "https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.csv",
+      "params": {
+        "$select": "pin,year,township_code,nbhd,class,sale_date,sale_price,doc_no,deed_type,is_multisale,num_parcels_sale,sale_filter_same_sale_within_365,sale_filter_less_than_10k,sale_filter_deed_type,row_id",
+        "$where": "sale_date >= '2025-12-01T00:00:00' AND sale_date < '2026-01-01T00:00:00'",
+        "$limit": "30000"
+      },
+      "bytes": 967462,
+      "rows": 6388,
+      "sha256": "b7dc9cca95b8929f6d91ad22297c6588423db430e3e181bfc27b6a2b4e20e005"
+    }
+  ],
+  "development_end": "2024-11-01",
+  "validation_end": "2025-01-01",
+  "calibration_end": "2025-04-01",
+  "test_end": "2026-01-01",
+  "price_bounds": [
+    50000,
+    3000000
+  ],
+  "building_sf_bounds": [
+    500,
+    10000
+  ],
+  "land_sf_bounds": [
+    500,
+    200000
+  ],
+  "candidate_leaves": [
+    15,
+    31
+  ],
+  "iterations": 250,
+  "bootstrap_repetitions": 500,
+  "confidence_levels": [
+    0.8,
+    0.9,
+    0.95
+  ],
+  "geographic_grid_degrees": 0.03
+}
