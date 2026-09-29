@@ -2,9 +2,11 @@
 
 Research by Michael P. Gibb, Ph.D. Public portfolio: [michaelpgibb.com/research](https://michaelpgibb.com/research).
 
-The catalog accounts for 60 study designs across 20 industries. **S28 and S02 have executed public-data evaluations. The other 58 have no completed findings.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
+The catalog accounts for 60 study designs across 20 industries. **S28, S02 and S04 have executed public-data evaluations. The other 57 have no completed findings.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
 
 ## Evaluated research
+
+- [S04 — Advertising incrementality](studies/S04): a corrected Criteo benchmark with profile-separated learning and independent policy evaluation. The selected honest forest does not demonstrate an advantage over response targeting at the prespecified capacity.
 
 - [S02 — Inventory planning](studies/S02): a 210-series M5 forecast comparison and explicit inventory replay. Better measured sales forecasts reduce assumed cost in the tested scenarios, but service and cost are different objectives; no realized savings are claimed.
 

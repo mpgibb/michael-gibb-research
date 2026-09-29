@@ -1,6 +1,6 @@
 # S04 — Incremental advertising under a fixed contact budget
 
-Status: corrected data inspected and evaluation protocol frozen. No evaluated finding is claimed.
+Status: evaluated. Run `S04-36e06a94-2716e1bf`. At 20% capacity, the validation-selected honest forest does not demonstrate a gain over response targeting: paired difference −0.08 benchmark conversions per 10,000, 95% interval −0.89 to +0.73. See [REPORT.md](REPORT.md).
 
 ## Decision
 
@@ -32,4 +32,4 @@ The original release had leakage; privacy subsampling prevents recovery of origi
 
 ## Reproduce
 
-Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S04/study.py`. The pinned publisher download and all individual records stay in the external S04 cache. See [DATA.md](DATA.md) for access and sampling limits, and [PROTOCOL.md](PROTOCOL.md) for the fixed comparisons. A result is published only after execution and checks.
+Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S04/study.py`. The pinned publisher download and all individual records stay in the external S04 cache. See [DATA.md](DATA.md) for access and sampling limits, and [PROTOCOL.md](PROTOCOL.md) for the fixed comparisons. Run `uv run python scripts/report_s04.py` to export the report and figures from the saved result.
