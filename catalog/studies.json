@@ -49,10 +49,10 @@
       "limitation": "Sales are not unconstrained demand; inventory costs and stockouts are not fully observed."
     },
     "execution_status": "evaluated",
-    "publication_status": "draft",
+    "publication_status": "published",
     "result_path": "studies/S02/results/result.json",
     "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S02",
-    "published_url": null,
+    "published_url": "https://michaelpgibb.com/research/s02-inventory-planning-with-coherent-demand-uncertainty",
     "updated": "2026-09-29"
   },
   {

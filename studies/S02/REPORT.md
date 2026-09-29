@@ -20,7 +20,7 @@ The 840 final product/store cycles contain 30,600 recorded unit sales. This is a
 
 ![Forecast error at each held-out origin](results/forecast-errors.svg)
 
-The 80% forecast bands cover 88.3% of final bottom-level cycles for the challenger; that aggregate number does not imply calibrated coverage for each store or future period. Store/category/total tables, all four origins, subgroup failures and dependence ablations remain in the result JSON. Aggregate scenarios sum exactly; marginal quantiles are not additive. The 17 overlapping calibration windows provide limited support for uncertainty and cross-series dependence.
+The 80% forecast bands cover 88.3% of final bottom-level cycles for the challenger; that aggregate number does not imply calibrated coverage for each store or future period. At the total-assortment level, the challenger bands cover only two of four final windows. The summed bottom-level point forecast is a different statistic from the aggregate scenario median and can fall outside the scenario band. Store/category/total tables, all four origins, subgroup failures and dependence ablations remain in the result JSON. Aggregate scenarios sum exactly; marginal quantiles are not additive. The 17 overlapping calibration windows provide limited support for uncertainty and cross-series dependence.
 
 ## Explicit inventory scenario
 
