@@ -68,6 +68,8 @@ class ActuarialChecks(unittest.TestCase):
         frame = pd.DataFrame({'DrivAge': [30], 'VehAge': [4], 'BonusMalus': [50], 'Density': [10], 'Area': ['A'], 'VehPower': [4], 'VehBrand': ['B1'], 'VehGas': ['Diesel'], 'Region': ['Test'], 'IDpol': ['abc'], 'ClaimNb': [1], 'Loss': [100], 'Exposure': [.4]})
         self.assertFalse(set(['IDpol', 'ClaimNb', 'Loss', 'Exposure']) & set(models.features(frame)))
         self.assertNotIn('Region', models.features(frame, geography=False))
+        frame.columns = pd.Index([np.str_(name) for name in frame.columns], dtype=object)
+        self.assertTrue(all(type(name) is str for name in models.features(frame).columns))
 
     def test_expense_assumption_boundaries(self):
         self.assertEqual(models.expense_premium(100, 0), 100)

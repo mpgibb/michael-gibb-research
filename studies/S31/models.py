@@ -16,6 +16,7 @@ def features(frame, geography=True):
     result['log_density'] = np.log1p(frame.Density.to_numpy(float))
     for col in CATEGORICAL if geography else CATEGORICAL[:-1]:
         result[col] = frame[col].astype(str)
+    result.columns = [str(name) for name in result.columns]
     return result
 
 
