@@ -1,0 +1,17 @@
+name: Research checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.19'
+          enable-cache: true
+      - run: uv sync --frozen
+      - run: uv run python -W error -m unittest discover -s tests -v
+      - run: uv run python -m research_program.validate

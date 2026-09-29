@@ -1,0 +1,2523 @@
+{
+  "schema_version": "1.0",
+  "study_id": "S28",
+  "run_id": "S28-da76dd82-74adfc57",
+  "code_version": "da76dd823b1b242cd90fc0280f93926d2bd575ba",
+  "source_sha256": {
+    "research_program/__init__.py": "5abb4829b477fd3068ee4c11dad2b59cd33e90aad06a17a5e9fb2f840a75abf1",
+    "research_program/evaluation.py": "09a5d060c34b8cd1e5a3330d90f5ff3e12adbca8cfe1ebe3297da2b91d227e45",
+    "research_program/io.py": "16de123c16d80bce5eb8d6766224dec1729d7c00449c2528f2348d86ad68d35f",
+    "research_program/validate.py": "3e6a591e2b77799bdf73683db438b2998e2e457340626c98b7ceed510ab3329e",
+    "studies/S28/config.json": "95d5b45ef1e5fb57bbcff1dc7f6ae9754913063c995804a2f8bc6d508da2bf95",
+    "studies/S28/study.py": "c2eda57e94b2d29dce3e51d2abcc0628e3e8354caf735ee444b0504e2c9bbfe9",
+    "uv.lock": "4d09c3bedbc7dc0c73b35263db97de40564730f5a0ec9752595ddf4e02c018fd"
+  },
+  "evaluated_on": "2026-09-29",
+  "data": {
+    "source_url": "https://archive.ics.uci.edu/dataset/222/bank+marketing",
+    "release": "bank-additional-full.csv; UCI Bank Marketing download inspected 2026-09-29",
+    "sha256": "74adfc578bf77a7ff4bb1ba4a9f8709d9e3c6907342959c2c8416847e0afb4d8",
+    "license": "CC BY 4.0, as listed by UCI",
+    "citation": "Moro, Rita & Cortez (2014), Bank Marketing, UCI, doi:10.24432/C5K306",
+    "coverage": "May 2008–November 2010; individual exact dates unavailable"
+  },
+  "target": {
+    "label": "Recorded term-deposit subscription",
+    "estimand": "Response probability among observed campaign contacts; not incremental effect",
+    "prediction_cutoff": "Immediately before the recorded current call",
+    "horizon": "Campaign outcome as recorded; fixed follow-up duration unavailable",
+    "unit": "contact/example"
+  },
+  "cohort": "Source-ordered final rows 32951–41188; exact calendar dates and person identifiers unavailable.",
+  "samples": {
+    "total": 41188,
+    "train": 28831,
+    "calibration": 4119,
+    "test": 8238,
+    "events": {
+      "train": 1606,
+      "calibration": 494,
+      "test": 2540
+    }
+  },
+  "models": [
+    {
+      "id": "random",
+      "label": "Random allocation",
+      "specification": "Constant probability from the preceding calibration cohort; analytical expected selection results."
+    },
+    {
+      "id": "business_rule",
+      "label": "History and recency rule",
+      "specification": "Previous success, prior contact and recency; sigmoid calibrated on preceding cohort."
+    },
+    {
+      "id": "logistic",
+      "label": "Regularized logistic",
+      "specification": {
+        "selected_configuration": 0.1,
+        "selected_by_development": true,
+        "features": "pre-call operational only",
+        "calibration": "disjoint chronological sigmoid"
+      }
+    },
+    {
+      "id": "additive",
+      "label": "Additive spline logistic",
+      "specification": {
+        "selected_configuration": 0.1,
+        "selected_by_development": false,
+        "features": "pre-call operational only",
+        "calibration": "disjoint chronological sigmoid"
+      }
+    },
+    {
+      "id": "boosting",
+      "label": "Gradient boosting",
+      "specification": {
+        "selected_configuration": 7,
+        "selected_by_development": false,
+        "features": "pre-call operational only",
+        "calibration": "disjoint chronological sigmoid"
+      }
+    },
+    {
+      "id": "boosting_richer_features",
+      "label": "Boosting with richer attributes",
+      "specification": "Sensitivity only; adds demographic and loan/default fields; same frozen complexity."
+    }
+  ],
+  "metrics": [
+    {
+      "name": "log_loss",
+      "model": "random",
+      "estimate": 0.7422752,
+      "unit": "natural-log units",
+      "split": "final chronological holdout",
+      "lower": 0.66306514,
+      "upper": 0.82094089,
+      "confidence": 0.95
+    },
+    {
+      "name": "brier",
+      "model": "random",
+      "estimate": 0.24875433,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.21854451,
+      "upper": 0.27875654,
+      "confidence": 0.95
+    },
+    {
+      "name": "auroc",
+      "model": "random",
+      "estimate": 0.5,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.5,
+      "upper": 0.5,
+      "confidence": 0.95
+    },
+    {
+      "name": "average_precision",
+      "model": "random",
+      "estimate": 0.30832726,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.26858461,
+      "upper": 0.3477968,
+      "confidence": 0.95
+    },
+    {
+      "name": "log_loss",
+      "model": "business_rule",
+      "estimate": 0.63487123,
+      "unit": "natural-log units",
+      "split": "final chronological holdout",
+      "lower": 0.57297818,
+      "upper": 0.6938197,
+      "confidence": 0.95
+    },
+    {
+      "name": "brier",
+      "model": "business_rule",
+      "estimate": 0.20947889,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.18575504,
+      "upper": 0.23206616,
+      "confidence": 0.95
+    },
+    {
+      "name": "auroc",
+      "model": "business_rule",
+      "estimate": 0.6723874,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.64880738,
+      "upper": 0.69564283,
+      "confidence": 0.95
+    },
+    {
+      "name": "average_precision",
+      "model": "business_rule",
+      "estimate": 0.47975828,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.43000738,
+      "upper": 0.52537525,
+      "confidence": 0.95
+    },
+    {
+      "name": "log_loss",
+      "model": "logistic",
+      "estimate": 0.71707459,
+      "unit": "natural-log units",
+      "split": "final chronological holdout",
+      "lower": 0.63923466,
+      "upper": 0.79094848,
+      "confidence": 0.95
+    },
+    {
+      "name": "brier",
+      "model": "logistic",
+      "estimate": 0.23618848,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.20774479,
+      "upper": 0.26382229,
+      "confidence": 0.95
+    },
+    {
+      "name": "auroc",
+      "model": "logistic",
+      "estimate": 0.69229426,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.6598686,
+      "upper": 0.72548465,
+      "confidence": 0.95
+    },
+    {
+      "name": "average_precision",
+      "model": "logistic",
+      "estimate": 0.47119684,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.42988756,
+      "upper": 0.5128937,
+      "confidence": 0.95
+    },
+    {
+      "name": "log_loss",
+      "model": "additive",
+      "estimate": 0.75361026,
+      "unit": "natural-log units",
+      "split": "final chronological holdout",
+      "lower": 0.67037408,
+      "upper": 0.83317089,
+      "confidence": 0.95
+    },
+    {
+      "name": "brier",
+      "model": "additive",
+      "estimate": 0.25018232,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.21944114,
+      "upper": 0.28031027,
+      "confidence": 0.95
+    },
+    {
+      "name": "auroc",
+      "model": "additive",
+      "estimate": 0.57343124,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.54336509,
+      "upper": 0.60742536,
+      "confidence": 0.95
+    },
+    {
+      "name": "average_precision",
+      "model": "additive",
+      "estimate": 0.41535505,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.37527843,
+      "upper": 0.46020211,
+      "confidence": 0.95
+    },
+    {
+      "name": "log_loss",
+      "model": "boosting",
+      "estimate": 0.74481205,
+      "unit": "natural-log units",
+      "split": "final chronological holdout",
+      "lower": 0.66349421,
+      "upper": 0.82284983,
+      "confidence": 0.95
+    },
+    {
+      "name": "brier",
+      "model": "boosting",
+      "estimate": 0.24136452,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.21314164,
+      "upper": 0.2687905,
+      "confidence": 0.95
+    },
+    {
+      "name": "auroc",
+      "model": "boosting",
+      "estimate": 0.63284762,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.60022745,
+      "upper": 0.66653357,
+      "confidence": 0.95
+    },
+    {
+      "name": "average_precision",
+      "model": "boosting",
+      "estimate": 0.44418193,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.40219414,
+      "upper": 0.48522978,
+      "confidence": 0.95
+    },
+    {
+      "name": "log_loss",
+      "model": "boosting_richer_features",
+      "estimate": 0.72839753,
+      "unit": "natural-log units",
+      "split": "final chronological holdout",
+      "lower": 0.65226973,
+      "upper": 0.80230872,
+      "confidence": 0.95
+    },
+    {
+      "name": "brier",
+      "model": "boosting_richer_features",
+      "estimate": 0.23965341,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.21212217,
+      "upper": 0.26681571,
+      "confidence": 0.95
+    },
+    {
+      "name": "auroc",
+      "model": "boosting_richer_features",
+      "estimate": 0.67998431,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.64521306,
+      "upper": 0.7101885,
+      "confidence": 0.95
+    },
+    {
+      "name": "average_precision",
+      "model": "boosting_richer_features",
+      "estimate": 0.44651089,
+      "unit": "fraction",
+      "split": "final chronological holdout",
+      "lower": 0.41070958,
+      "upper": 0.48484267,
+      "confidence": 0.95
+    }
+  ],
+  "uncertainty": "500 paired circular moving-block bootstrap draws, 100 source-ordered test records per block; conditional on fixed fitted models. Block lengths 50/200 are sensitivity checks.",
+  "assumptions": [
+    "Source row order is chronological as documented by UCI.",
+    "Operational history fields describe information preceding the current call under the source definitions.",
+    "Scenario response values and contact costs are user assumptions, not observed financial outcomes."
+  ],
+  "limitations": [
+    "Single bank, historical observed-contact population; no randomized no-contact comparison.",
+    "No stable customer IDs or exact call dates; dependence and repeated contacts cannot be fully resolved.",
+    "Calibrated probabilities can fail under later campaign shifts. Bootstrap intervals do not include model-retraining uncertainty.",
+    "Economic indicator release vintages cannot be verified, so all five are excluded.",
+    "Matching anonymized profiles do not establish matching people. Independent technical review is pending."
+  ],
+  "tables": {
+    "audit": {
+      "rows": 41188,
+      "columns": [
+        "age",
+        "job",
+        "marital",
+        "education",
+        "default",
+        "housing",
+        "loan",
+        "contact",
+        "month",
+        "day_of_week",
+        "duration",
+        "campaign",
+        "pdays",
+        "previous",
+        "poutcome",
+        "emp.var.rate",
+        "cons.price.idx",
+        "cons.conf.idx",
+        "euribor3m",
+        "nr.employed",
+        "y"
+      ],
+      "exact_rows_repeated": 12,
+      "test_profiles_seen_before": 2,
+      "missing_categorical": {
+        "job": 330,
+        "marital": 80,
+        "education": 1731,
+        "default": 8597,
+        "housing": 990,
+        "loan": 990,
+        "contact": 0,
+        "month": 0,
+        "day_of_week": 0,
+        "poutcome": 0
+      },
+      "not_previously_contacted": 39673,
+      "primary_features": [
+        "contact",
+        "month",
+        "day_of_week",
+        "poutcome",
+        "previous",
+        "campaign_prior",
+        "ever_contacted",
+        "prior_days"
+      ],
+      "excluded_columns": [
+        "duration",
+        "emp.var.rate",
+        "cons.price.idx",
+        "cons.conf.idx",
+        "euribor3m",
+        "nr.employed"
+      ],
+      "category_novelty": {
+        "contact": 0,
+        "month": 570,
+        "day_of_week": 0,
+        "poutcome": 0
+      },
+      "boundaries_zero_based_exclusive": {
+        "development_end": 28831,
+        "calibration_end": 32950,
+        "final_end": 41188
+      }
+    },
+    "tuning": [
+      {
+        "model": "logistic",
+        "setting": 0.1,
+        "fold_log_loss": [
+          0.22329935,
+          0.30730809
+        ],
+        "mean_log_loss": 0.26530372
+      },
+      {
+        "model": "logistic",
+        "setting": 1.0,
+        "fold_log_loss": [
+          0.23444677,
+          0.30972502
+        ],
+        "mean_log_loss": 0.27208589
+      },
+      {
+        "model": "additive",
+        "setting": 0.1,
+        "fold_log_loss": [
+          0.22284382,
+          0.30864637
+        ],
+        "mean_log_loss": 0.26574509
+      },
+      {
+        "model": "additive",
+        "setting": 1.0,
+        "fold_log_loss": [
+          0.23366785,
+          0.31094159
+        ],
+        "mean_log_loss": 0.27230472
+      },
+      {
+        "model": "boosting",
+        "setting": 7,
+        "fold_log_loss": [
+          0.223032,
+          0.3102238
+        ],
+        "mean_log_loss": 0.2666279
+      },
+      {
+        "model": "boosting",
+        "setting": 15,
+        "fold_log_loss": [
+          0.22444395,
+          0.31145188
+        ],
+        "mean_log_loss": 0.26794791
+      }
+    ],
+    "selected_model": "logistic",
+    "capacity_frontier": [
+      {
+        "model": "random",
+        "capacity": 0.05,
+        "selected": 411,
+        "responses": 126.72250546,
+        "precision": 0.30832726,
+        "capture": 0.04989075,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.04989075,
+          "upper": 0.04989075,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.1,
+        "selected": 823,
+        "responses": 253.75333819,
+        "precision": 0.30832726,
+        "capture": 0.09990289,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.09990289,
+          "upper": 0.09990289,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.15,
+        "selected": 1235,
+        "responses": 380.78417092,
+        "precision": 0.30832726,
+        "capture": 0.14991503,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.14991503,
+          "upper": 0.14991503,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.2,
+        "selected": 1647,
+        "responses": 507.81500364,
+        "precision": 0.30832726,
+        "capture": 0.19992717,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.19992717,
+          "upper": 0.19992717,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.25,
+        "selected": 2059,
+        "responses": 634.84583637,
+        "precision": 0.30832726,
+        "capture": 0.24993931,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.24993931,
+          "upper": 0.24993931,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.3,
+        "selected": 2471,
+        "responses": 761.87666909,
+        "precision": 0.30832726,
+        "capture": 0.29995144,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.29995144,
+          "upper": 0.29995144,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.4,
+        "selected": 3295,
+        "responses": 1015.93833455,
+        "precision": 0.30832726,
+        "capture": 0.39997572,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.39997572,
+          "upper": 0.39997572,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.5,
+        "selected": 4119,
+        "responses": 1270.0,
+        "precision": 0.30832726,
+        "capture": 0.5,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.5,
+          "upper": 0.5,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.6,
+        "selected": 4942,
+        "responses": 1523.75333819,
+        "precision": 0.30832726,
+        "capture": 0.59990289,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.59990289,
+          "upper": 0.59990289,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.7,
+        "selected": 5766,
+        "responses": 1777.81500364,
+        "precision": 0.30832726,
+        "capture": 0.69992717,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.69992717,
+          "upper": 0.69992717,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.8,
+        "selected": 6590,
+        "responses": 2031.87666909,
+        "precision": 0.30832726,
+        "capture": 0.79995144,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.79995144,
+          "upper": 0.79995144,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 0.9,
+        "selected": 7414,
+        "responses": 2285.93833455,
+        "precision": 0.30832726,
+        "capture": 0.89997572,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.89997572,
+          "upper": 0.89997572,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "random",
+        "capacity": 1.0,
+        "selected": 8238,
+        "responses": 2540.0,
+        "precision": 0.30832726,
+        "capture": 1.0,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 1.0,
+          "upper": 1.0,
+          "confidence": 0.95
+        },
+        "kind": "analytical expectation"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.05,
+        "selected": 411,
+        "responses": 288,
+        "precision": 0.70072993,
+        "capture": 0.11338583,
+        "precision_interval": {
+          "lower": 0.63029868,
+          "upper": 0.76079648,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.08993759,
+          "upper": 0.13680291,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.1,
+        "selected": 823,
+        "responses": 573,
+        "precision": 0.69623329,
+        "capture": 0.22559055,
+        "precision_interval": {
+          "lower": 0.64052974,
+          "upper": 0.74609287,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.19460443,
+          "upper": 0.25485535,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.15,
+        "selected": 1235,
+        "responses": 848,
+        "precision": 0.68663968,
+        "capture": 0.33385827,
+        "precision_interval": {
+          "lower": 0.6455841,
+          "upper": 0.72292109,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.29332299,
+          "upper": 0.3716502,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.2,
+        "selected": 1647,
+        "responses": 934,
+        "precision": 0.56709168,
+        "capture": 0.36771654,
+        "precision_interval": {
+          "lower": 0.48698107,
+          "upper": 0.65125065,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.32410802,
+          "upper": 0.40870827,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.25,
+        "selected": 2059,
+        "responses": 970,
+        "precision": 0.47110248,
+        "capture": 0.38188976,
+        "precision_interval": {
+          "lower": 0.39056548,
+          "upper": 0.55360769,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.34103713,
+          "upper": 0.42167114,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.3,
+        "selected": 2471,
+        "responses": 1038,
+        "precision": 0.42007285,
+        "capture": 0.40866142,
+        "precision_interval": {
+          "lower": 0.35289977,
+          "upper": 0.49691472,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.36982852,
+          "upper": 0.44766603,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.4,
+        "selected": 3295,
+        "responses": 1282,
+        "precision": 0.38907436,
+        "capture": 0.50472441,
+        "precision_interval": {
+          "lower": 0.3368885,
+          "upper": 0.44689726,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.46776321,
+          "upper": 0.53873389,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.5,
+        "selected": 4119,
+        "responses": 1611,
+        "precision": 0.39111435,
+        "capture": 0.63425197,
+        "precision_interval": {
+          "lower": 0.3444642,
+          "upper": 0.43819641,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.59872685,
+          "upper": 0.66963153,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.6,
+        "selected": 4942,
+        "responses": 1789,
+        "precision": 0.36199919,
+        "capture": 0.70433071,
+        "precision_interval": {
+          "lower": 0.31878857,
+          "upper": 0.40571195,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.67830862,
+          "upper": 0.73052237,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.7,
+        "selected": 5766,
+        "responses": 1967,
+        "precision": 0.3411377,
+        "capture": 0.77440945,
+        "precision_interval": {
+          "lower": 0.29953229,
+          "upper": 0.38225968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.75129234,
+          "upper": 0.79761064,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.8,
+        "selected": 6590,
+        "responses": 2203,
+        "precision": 0.33429439,
+        "capture": 0.86732283,
+        "precision_interval": {
+          "lower": 0.29348266,
+          "upper": 0.37527722,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.84753981,
+          "upper": 0.88532875,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 0.9,
+        "selected": 7414,
+        "responses": 2412,
+        "precision": 0.32533046,
+        "capture": 0.9496063,
+        "precision_interval": {
+          "lower": 0.2855666,
+          "upper": 0.3655992,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.94042679,
+          "upper": 0.95868286,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "business_rule",
+        "capacity": 1.0,
+        "selected": 8238,
+        "responses": 2540,
+        "precision": 0.30832726,
+        "capture": 1.0,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 1.0,
+          "upper": 1.0,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.05,
+        "selected": 411,
+        "responses": 223,
+        "precision": 0.54257908,
+        "capture": 0.08779528,
+        "precision_interval": {
+          "lower": 0.4417675,
+          "upper": 0.64810665,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.046468,
+          "upper": 0.13842491,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.1,
+        "selected": 823,
+        "responses": 409,
+        "precision": 0.49696233,
+        "capture": 0.16102362,
+        "precision_interval": {
+          "lower": 0.42547015,
+          "upper": 0.57528105,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.08413499,
+          "upper": 0.248131,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.15,
+        "selected": 1235,
+        "responses": 637,
+        "precision": 0.51578947,
+        "capture": 0.2507874,
+        "precision_interval": {
+          "lower": 0.46120664,
+          "upper": 0.57756447,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.16119957,
+          "upper": 0.34616532,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.2,
+        "selected": 1647,
+        "responses": 843,
+        "precision": 0.51183971,
+        "capture": 0.33188976,
+        "precision_interval": {
+          "lower": 0.46102247,
+          "upper": 0.56169355,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.24676341,
+          "upper": 0.4274801,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.25,
+        "selected": 2059,
+        "responses": 1047,
+        "precision": 0.50849927,
+        "capture": 0.41220472,
+        "precision_interval": {
+          "lower": 0.46573434,
+          "upper": 0.5506602,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.3253492,
+          "upper": 0.502135,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.3,
+        "selected": 2471,
+        "responses": 1241,
+        "precision": 0.50222582,
+        "capture": 0.48858268,
+        "precision_interval": {
+          "lower": 0.46478578,
+          "upper": 0.54031144,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.40883536,
+          "upper": 0.57079998,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.4,
+        "selected": 3295,
+        "responses": 1598,
+        "precision": 0.48497724,
+        "capture": 0.62913386,
+        "precision_interval": {
+          "lower": 0.45306719,
+          "upper": 0.5157244,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.55645902,
+          "upper": 0.69607826,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.5,
+        "selected": 4119,
+        "responses": 1835,
+        "precision": 0.44549648,
+        "capture": 0.72244094,
+        "precision_interval": {
+          "lower": 0.4152161,
+          "upper": 0.47777492,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.65776434,
+          "upper": 0.77871916,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.6,
+        "selected": 4942,
+        "responses": 2002,
+        "precision": 0.40509915,
+        "capture": 0.78818898,
+        "precision_interval": {
+          "lower": 0.36877002,
+          "upper": 0.43980311,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.73700309,
+          "upper": 0.83253294,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.7,
+        "selected": 5766,
+        "responses": 2136,
+        "precision": 0.37044745,
+        "capture": 0.84094488,
+        "precision_interval": {
+          "lower": 0.3339364,
+          "upper": 0.4089928,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.80138322,
+          "upper": 0.87543888,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.8,
+        "selected": 6590,
+        "responses": 2281,
+        "precision": 0.3461305,
+        "capture": 0.8980315,
+        "precision_interval": {
+          "lower": 0.30883856,
+          "upper": 0.38254778,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.86974097,
+          "upper": 0.92267994,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 0.9,
+        "selected": 7414,
+        "responses": 2427,
+        "precision": 0.32735366,
+        "capture": 0.95551181,
+        "precision_interval": {
+          "lower": 0.28716054,
+          "upper": 0.36496925,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.93741776,
+          "upper": 0.97134509,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "logistic",
+        "capacity": 1.0,
+        "selected": 8238,
+        "responses": 2540,
+        "precision": 0.30832726,
+        "capture": 1.0,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 1.0,
+          "upper": 1.0,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.05,
+        "selected": 411,
+        "responses": 208,
+        "precision": 0.50608273,
+        "capture": 0.08188976,
+        "precision_interval": {
+          "lower": 0.40516773,
+          "upper": 0.63314066,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.04295825,
+          "upper": 0.13066266,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.1,
+        "selected": 823,
+        "responses": 395,
+        "precision": 0.4799514,
+        "capture": 0.15551181,
+        "precision_interval": {
+          "lower": 0.41013244,
+          "upper": 0.55877924,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.09095152,
+          "upper": 0.22866769,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.15,
+        "selected": 1235,
+        "responses": 630,
+        "precision": 0.51012146,
+        "capture": 0.2480315,
+        "precision_interval": {
+          "lower": 0.45155658,
+          "upper": 0.57207388,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.17674587,
+          "upper": 0.32346308,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.2,
+        "selected": 1647,
+        "responses": 790,
+        "precision": 0.47965999,
+        "capture": 0.31102362,
+        "precision_interval": {
+          "lower": 0.43053407,
+          "upper": 0.52657017,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.23419152,
+          "upper": 0.39328944,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.25,
+        "selected": 2059,
+        "responses": 952,
+        "precision": 0.46236037,
+        "capture": 0.37480315,
+        "precision_interval": {
+          "lower": 0.41883775,
+          "upper": 0.50200328,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.29779514,
+          "upper": 0.45289211,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.3,
+        "selected": 2471,
+        "responses": 1134,
+        "precision": 0.45892351,
+        "capture": 0.44645669,
+        "precision_interval": {
+          "lower": 0.42274381,
+          "upper": 0.49543765,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.37451791,
+          "upper": 0.51381765,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.4,
+        "selected": 3295,
+        "responses": 1389,
+        "precision": 0.4215478,
+        "capture": 0.54685039,
+        "precision_interval": {
+          "lower": 0.38891799,
+          "upper": 0.45362263,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.48578914,
+          "upper": 0.60335725,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.5,
+        "selected": 4119,
+        "responses": 1529,
+        "precision": 0.3712066,
+        "capture": 0.6019685,
+        "precision_interval": {
+          "lower": 0.33446616,
+          "upper": 0.41167354,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.55218898,
+          "upper": 0.65050672,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.6,
+        "selected": 4942,
+        "responses": 1641,
+        "precision": 0.3320518,
+        "capture": 0.64606299,
+        "precision_interval": {
+          "lower": 0.2966269,
+          "upper": 0.36820322,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.60086569,
+          "upper": 0.68749974,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.7,
+        "selected": 5766,
+        "responses": 1767,
+        "precision": 0.30645161,
+        "capture": 0.69566929,
+        "precision_interval": {
+          "lower": 0.27042678,
+          "upper": 0.34214041,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.66002182,
+          "upper": 0.73223974,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.8,
+        "selected": 6590,
+        "responses": 1956,
+        "precision": 0.29681335,
+        "capture": 0.77007874,
+        "precision_interval": {
+          "lower": 0.25914912,
+          "upper": 0.33329456,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.7385208,
+          "upper": 0.80746825,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 0.9,
+        "selected": 7414,
+        "responses": 2061,
+        "precision": 0.27798759,
+        "capture": 0.81141732,
+        "precision_interval": {
+          "lower": 0.23996506,
+          "upper": 0.31585496,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.78067612,
+          "upper": 0.84666611,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "additive",
+        "capacity": 1.0,
+        "selected": 8238,
+        "responses": 2540,
+        "precision": 0.30832726,
+        "capture": 1.0,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 1.0,
+          "upper": 1.0,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.05,
+        "selected": 411,
+        "responses": 193,
+        "precision": 0.46958637,
+        "capture": 0.07598425,
+        "precision_interval": {
+          "lower": 0.37935473,
+          "upper": 0.57363445,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.03755913,
+          "upper": 0.12287868,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.1,
+        "selected": 823,
+        "responses": 369,
+        "precision": 0.44835966,
+        "capture": 0.14527559,
+        "precision_interval": {
+          "lower": 0.37766564,
+          "upper": 0.52263916,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.07250754,
+          "upper": 0.23131071,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.15,
+        "selected": 1235,
+        "responses": 653,
+        "precision": 0.52874494,
+        "capture": 0.25708661,
+        "precision_interval": {
+          "lower": 0.47276489,
+          "upper": 0.59572936,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.16652435,
+          "upper": 0.35243647,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.2,
+        "selected": 1647,
+        "responses": 876,
+        "precision": 0.53187614,
+        "capture": 0.34488189,
+        "precision_interval": {
+          "lower": 0.48316666,
+          "upper": 0.58348496,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.25962887,
+          "upper": 0.42761073,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.25,
+        "selected": 2059,
+        "responses": 1048,
+        "precision": 0.50898494,
+        "capture": 0.41259843,
+        "precision_interval": {
+          "lower": 0.4668928,
+          "upper": 0.55524727,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.32824524,
+          "upper": 0.48636311,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.3,
+        "selected": 2471,
+        "responses": 1217,
+        "precision": 0.49251315,
+        "capture": 0.47913386,
+        "precision_interval": {
+          "lower": 0.45282066,
+          "upper": 0.53132298,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.4043471,
+          "upper": 0.54544058,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.4,
+        "selected": 3295,
+        "responses": 1499,
+        "precision": 0.45493171,
+        "capture": 0.59015748,
+        "precision_interval": {
+          "lower": 0.41992285,
+          "upper": 0.48825478,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.52408044,
+          "upper": 0.65071149,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.5,
+        "selected": 4119,
+        "responses": 1699,
+        "precision": 0.41247876,
+        "capture": 0.66889764,
+        "precision_interval": {
+          "lower": 0.37181434,
+          "upper": 0.4527397,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.61082404,
+          "upper": 0.71934632,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.6,
+        "selected": 4942,
+        "responses": 1837,
+        "precision": 0.37171186,
+        "capture": 0.72322835,
+        "precision_interval": {
+          "lower": 0.33170974,
+          "upper": 0.41325561,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.67266683,
+          "upper": 0.765019,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.7,
+        "selected": 5766,
+        "responses": 1952,
+        "precision": 0.33853625,
+        "capture": 0.76850394,
+        "precision_interval": {
+          "lower": 0.29922114,
+          "upper": 0.37808829,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.72240712,
+          "upper": 0.8055197,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.8,
+        "selected": 6590,
+        "responses": 2082,
+        "precision": 0.31593323,
+        "capture": 0.81968504,
+        "precision_interval": {
+          "lower": 0.27652884,
+          "upper": 0.35483204,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.78257164,
+          "upper": 0.85107785,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 0.9,
+        "selected": 7414,
+        "responses": 2182,
+        "precision": 0.29430807,
+        "capture": 0.85905512,
+        "precision_interval": {
+          "lower": 0.25619203,
+          "upper": 0.3345425,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.82964241,
+          "upper": 0.88771423,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting",
+        "capacity": 1.0,
+        "selected": 8238,
+        "responses": 2540,
+        "precision": 0.30832726,
+        "capture": 1.0,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 1.0,
+          "upper": 1.0,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.05,
+        "selected": 411,
+        "responses": 205,
+        "precision": 0.49878345,
+        "capture": 0.08070866,
+        "precision_interval": {
+          "lower": 0.42960883,
+          "upper": 0.59124653,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.03922801,
+          "upper": 0.13389491,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.1,
+        "selected": 823,
+        "responses": 386,
+        "precision": 0.4690158,
+        "capture": 0.1519685,
+        "precision_interval": {
+          "lower": 0.39582422,
+          "upper": 0.54582284,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.0770578,
+          "upper": 0.23897035,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.15,
+        "selected": 1235,
+        "responses": 608,
+        "precision": 0.49230769,
+        "capture": 0.23937008,
+        "precision_interval": {
+          "lower": 0.43541644,
+          "upper": 0.54672449,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.14825326,
+          "upper": 0.33341051,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.2,
+        "selected": 1647,
+        "responses": 831,
+        "precision": 0.50455373,
+        "capture": 0.32716535,
+        "precision_interval": {
+          "lower": 0.45794605,
+          "upper": 0.54716224,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.23784861,
+          "upper": 0.41395817,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.25,
+        "selected": 2059,
+        "responses": 1019,
+        "precision": 0.49490044,
+        "capture": 0.4011811,
+        "precision_interval": {
+          "lower": 0.45343018,
+          "upper": 0.53404222,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.32161333,
+          "upper": 0.47750507,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.3,
+        "selected": 2471,
+        "responses": 1202,
+        "precision": 0.48644274,
+        "capture": 0.47322835,
+        "precision_interval": {
+          "lower": 0.44906432,
+          "upper": 0.52141326,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.40040726,
+          "upper": 0.54351518,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.4,
+        "selected": 3295,
+        "responses": 1519,
+        "precision": 0.46100152,
+        "capture": 0.5980315,
+        "precision_interval": {
+          "lower": 0.42741415,
+          "upper": 0.49286401,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.5353845,
+          "upper": 0.65383115,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.5,
+        "selected": 4119,
+        "responses": 1790,
+        "precision": 0.4345715,
+        "capture": 0.70472441,
+        "precision_interval": {
+          "lower": 0.4022959,
+          "upper": 0.46321617,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.65166629,
+          "upper": 0.75386482,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.6,
+        "selected": 4942,
+        "responses": 1986,
+        "precision": 0.40186159,
+        "capture": 0.78188976,
+        "precision_interval": {
+          "lower": 0.36751265,
+          "upper": 0.4323515,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.73214456,
+          "upper": 0.82469573,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.7,
+        "selected": 5766,
+        "responses": 2145,
+        "precision": 0.37200832,
+        "capture": 0.84448819,
+        "precision_interval": {
+          "lower": 0.33508445,
+          "upper": 0.40600182,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.80237279,
+          "upper": 0.87749024,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.8,
+        "selected": 6590,
+        "responses": 2290,
+        "precision": 0.34749621,
+        "capture": 0.9015748,
+        "precision_interval": {
+          "lower": 0.31005049,
+          "upper": 0.38388227,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.8695426,
+          "upper": 0.92635034,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 0.9,
+        "selected": 7414,
+        "responses": 2425,
+        "precision": 0.3270839,
+        "capture": 0.95472441,
+        "precision_interval": {
+          "lower": 0.28879302,
+          "upper": 0.36644621,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 0.93717175,
+          "upper": 0.96934593,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      },
+      {
+        "model": "boosting_richer_features",
+        "capacity": 1.0,
+        "selected": 8238,
+        "responses": 2540,
+        "precision": 0.30832726,
+        "capture": 1.0,
+        "precision_interval": {
+          "lower": 0.26858461,
+          "upper": 0.3477968,
+          "confidence": 0.95
+        },
+        "capture_interval": {
+          "lower": 1.0,
+          "upper": 1.0,
+          "confidence": 0.95
+        },
+        "kind": "observed selected contacts"
+      }
+    ],
+    "calibration": [
+      {
+        "model": "random",
+        "bin": 1,
+        "n": 8238,
+        "prediction": 0.11993202,
+        "observed": 0.30832726
+      },
+      {
+        "model": "business_rule",
+        "bin": 1,
+        "n": 7033,
+        "prediction": 0.11031274,
+        "observed": 0.2429973
+      },
+      {
+        "model": "business_rule",
+        "bin": 4,
+        "n": 1178,
+        "prediction": 0.47555454,
+        "observed": 0.69269949
+      },
+      {
+        "model": "business_rule",
+        "bin": 5,
+        "n": 27,
+        "prediction": 0.53393043,
+        "observed": 0.55555556
+      },
+      {
+        "model": "logistic",
+        "bin": 0,
+        "n": 5276,
+        "prediction": 0.0748629,
+        "observed": 0.20602729
+      },
+      {
+        "model": "logistic",
+        "bin": 1,
+        "n": 1830,
+        "prediction": 0.12862269,
+        "observed": 0.48415301
+      },
+      {
+        "model": "logistic",
+        "bin": 2,
+        "n": 344,
+        "prediction": 0.24763503,
+        "observed": 0.51744186
+      },
+      {
+        "model": "logistic",
+        "bin": 3,
+        "n": 529,
+        "prediction": 0.36294347,
+        "observed": 0.44801512
+      },
+      {
+        "model": "logistic",
+        "bin": 4,
+        "n": 221,
+        "prediction": 0.43229379,
+        "observed": 0.58823529
+      },
+      {
+        "model": "logistic",
+        "bin": 5,
+        "n": 24,
+        "prediction": 0.54138369,
+        "observed": 0.625
+      },
+      {
+        "model": "logistic",
+        "bin": 6,
+        "n": 10,
+        "prediction": 0.62980788,
+        "observed": 0.5
+      },
+      {
+        "model": "logistic",
+        "bin": 7,
+        "n": 3,
+        "prediction": 0.71000201,
+        "observed": 0.33333333
+      },
+      {
+        "model": "logistic",
+        "bin": 8,
+        "n": 1,
+        "prediction": 0.87723649,
+        "observed": 1.0
+      },
+      {
+        "model": "additive",
+        "bin": 0,
+        "n": 655,
+        "prediction": 0.07974837,
+        "observed": 0.61526718
+      },
+      {
+        "model": "additive",
+        "bin": 1,
+        "n": 7583,
+        "prediction": 0.12028913,
+        "observed": 0.28181459
+      },
+      {
+        "model": "boosting",
+        "bin": 0,
+        "n": 5358,
+        "prediction": 0.07562889,
+        "observed": 0.21836506
+      },
+      {
+        "model": "boosting",
+        "bin": 1,
+        "n": 1855,
+        "prediction": 0.1244013,
+        "observed": 0.47169811
+      },
+      {
+        "model": "boosting",
+        "bin": 2,
+        "n": 114,
+        "prediction": 0.24383433,
+        "observed": 0.64035088
+      },
+      {
+        "model": "boosting",
+        "bin": 3,
+        "n": 130,
+        "prediction": 0.34238005,
+        "observed": 0.59230769
+      },
+      {
+        "model": "boosting",
+        "bin": 4,
+        "n": 260,
+        "prediction": 0.45403567,
+        "observed": 0.41923077
+      },
+      {
+        "model": "boosting",
+        "bin": 5,
+        "n": 401,
+        "prediction": 0.54693392,
+        "observed": 0.40648379
+      },
+      {
+        "model": "boosting",
+        "bin": 6,
+        "n": 117,
+        "prediction": 0.64355916,
+        "observed": 0.5982906
+      },
+      {
+        "model": "boosting",
+        "bin": 7,
+        "n": 3,
+        "prediction": 0.71028085,
+        "observed": 1.0
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 0,
+        "n": 5349,
+        "prediction": 0.07693139,
+        "observed": 0.21779772
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 1,
+        "n": 1853,
+        "prediction": 0.12299461,
+        "observed": 0.47814355
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 2,
+        "n": 62,
+        "prediction": 0.23822162,
+        "observed": 0.5483871
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 3,
+        "n": 134,
+        "prediction": 0.36116917,
+        "observed": 0.44029851
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 4,
+        "n": 338,
+        "prediction": 0.45339795,
+        "observed": 0.46449704
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 5,
+        "n": 322,
+        "prediction": 0.5468133,
+        "observed": 0.48447205
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 6,
+        "n": 163,
+        "prediction": 0.63569344,
+        "observed": 0.47852761
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 7,
+        "n": 16,
+        "prediction": 0.7343056,
+        "observed": 0.3125
+      },
+      {
+        "model": "boosting_richer_features",
+        "bin": 8,
+        "n": 1,
+        "prediction": 0.80533516,
+        "observed": 0.0
+      }
+    ],
+    "periods": [
+      {
+        "model": "random",
+        "period": 1,
+        "source_row_start": 32951,
+        "source_row_end": 35010,
+        "n": 2060,
+        "events": 164,
+        "log_loss": 0.28642804,
+        "precision_at_20_percent": 0.07961165
+      },
+      {
+        "model": "random",
+        "period": 2,
+        "source_row_start": 35011,
+        "source_row_end": 37070,
+        "n": 2060,
+        "events": 484,
+        "log_loss": 0.59603178,
+        "precision_at_20_percent": 0.23495146
+      },
+      {
+        "model": "random",
+        "period": 3,
+        "source_row_start": 37071,
+        "source_row_end": 39129,
+        "n": 2059,
+        "events": 819,
+        "log_loss": 0.92053303,
+        "precision_at_20_percent": 0.39776591
+      },
+      {
+        "model": "random",
+        "period": 4,
+        "source_row_start": 39130,
+        "source_row_end": 41188,
+        "n": 2059,
+        "events": 1073,
+        "log_loss": 1.16640035,
+        "precision_at_20_percent": 0.52112676
+      },
+      {
+        "model": "business_rule",
+        "period": 1,
+        "source_row_start": 32951,
+        "source_row_end": 35010,
+        "n": 2060,
+        "events": 164,
+        "log_loss": 0.2802762,
+        "precision_at_20_percent": 0.12135922
+      },
+      {
+        "model": "business_rule",
+        "period": 2,
+        "source_row_start": 35011,
+        "source_row_end": 37070,
+        "n": 2060,
+        "events": 484,
+        "log_loss": 0.57946782,
+        "precision_at_20_percent": 0.26456311
+      },
+      {
+        "model": "business_rule",
+        "period": 3,
+        "source_row_start": 37071,
+        "source_row_end": 39129,
+        "n": 2059,
+        "events": 819,
+        "log_loss": 0.79684966,
+        "precision_at_20_percent": 0.64720195
+      },
+      {
+        "model": "business_rule",
+        "period": 4,
+        "source_row_start": 39130,
+        "source_row_end": 41188,
+        "n": 2059,
+        "events": 1073,
+        "log_loss": 0.88309038,
+        "precision_at_20_percent": 0.78588808
+      },
+      {
+        "model": "logistic",
+        "period": 1,
+        "source_row_start": 32951,
+        "source_row_end": 35010,
+        "n": 2060,
+        "events": 164,
+        "log_loss": 0.27246494,
+        "precision_at_20_percent": 0.12135922
+      },
+      {
+        "model": "logistic",
+        "period": 2,
+        "source_row_start": 35011,
+        "source_row_end": 37070,
+        "n": 2060,
+        "events": 484,
+        "log_loss": 0.6323275,
+        "precision_at_20_percent": 0.39320388
+      },
+      {
+        "model": "logistic",
+        "period": 3,
+        "source_row_start": 37071,
+        "source_row_end": 39129,
+        "n": 2059,
+        "events": 819,
+        "log_loss": 0.88017148,
+        "precision_at_20_percent": 0.41605839
+      },
+      {
+        "model": "logistic",
+        "period": 4,
+        "source_row_start": 39130,
+        "source_row_end": 41188,
+        "n": 2059,
+        "events": 1073,
+        "log_loss": 1.08359153,
+        "precision_at_20_percent": 0.57177616
+      },
+      {
+        "model": "additive",
+        "period": 1,
+        "source_row_start": 32951,
+        "source_row_end": 35010,
+        "n": 2060,
+        "events": 164,
+        "log_loss": 0.28422091,
+        "precision_at_20_percent": 0.11407767
+      },
+      {
+        "model": "additive",
+        "period": 2,
+        "source_row_start": 35011,
+        "source_row_end": 37070,
+        "n": 2060,
+        "events": 484,
+        "log_loss": 0.60353445,
+        "precision_at_20_percent": 0.37378641
+      },
+      {
+        "model": "additive",
+        "period": 3,
+        "source_row_start": 37071,
+        "source_row_end": 39129,
+        "n": 2059,
+        "events": 819,
+        "log_loss": 0.92845886,
+        "precision_at_20_percent": 0.42335766
+      },
+      {
+        "model": "additive",
+        "period": 4,
+        "source_row_start": 39130,
+        "source_row_end": 41188,
+        "n": 2059,
+        "events": 1073,
+        "log_loss": 1.19852767,
+        "precision_at_20_percent": 0.53527981
+      },
+      {
+        "model": "boosting",
+        "period": 1,
+        "source_row_start": 32951,
+        "source_row_end": 35010,
+        "n": 2060,
+        "events": 164,
+        "log_loss": 0.2744535,
+        "precision_at_20_percent": 0.11650485
+      },
+      {
+        "model": "boosting",
+        "period": 2,
+        "source_row_start": 35011,
+        "source_row_end": 37070,
+        "n": 2060,
+        "events": 484,
+        "log_loss": 0.64754522,
+        "precision_at_20_percent": 0.36893204
+      },
+      {
+        "model": "boosting",
+        "period": 3,
+        "source_row_start": 37071,
+        "source_row_end": 39129,
+        "n": 2059,
+        "events": 819,
+        "log_loss": 0.95487671,
+        "precision_at_20_percent": 0.39416058
+      },
+      {
+        "model": "boosting",
+        "period": 4,
+        "source_row_start": 39130,
+        "source_row_end": 41188,
+        "n": 2059,
+        "events": 1073,
+        "log_loss": 1.10264846,
+        "precision_at_20_percent": 0.50364964
+      },
+      {
+        "model": "boosting_richer_features",
+        "period": 1,
+        "source_row_start": 32951,
+        "source_row_end": 35010,
+        "n": 2060,
+        "events": 164,
+        "log_loss": 0.27594299,
+        "precision_at_20_percent": 0.11650485
+      },
+      {
+        "model": "boosting_richer_features",
+        "period": 2,
+        "source_row_start": 35011,
+        "source_row_end": 37070,
+        "n": 2060,
+        "events": 484,
+        "log_loss": 0.6376074,
+        "precision_at_20_percent": 0.37621359
+      },
+      {
+        "model": "boosting_richer_features",
+        "period": 3,
+        "source_row_start": 37071,
+        "source_row_end": 39129,
+        "n": 2059,
+        "events": 819,
+        "log_loss": 0.91989402,
+        "precision_at_20_percent": 0.41119221
+      },
+      {
+        "model": "boosting_richer_features",
+        "period": 4,
+        "source_row_start": 39130,
+        "source_row_end": 41188,
+        "n": 2059,
+        "events": 1073,
+        "log_loss": 1.08040957,
+        "precision_at_20_percent": 0.52554745
+      }
+    ],
+    "block_sensitivity": [
+      {
+        "block_length": 100,
+        "model": "logistic",
+        "metric": "log_loss_difference_vs_business_rule",
+        "estimate": 0.08220335,
+        "lower": 0.0470052,
+        "upper": 0.11767294,
+        "confidence": 0.95
+      },
+      {
+        "block_length": 50,
+        "model": "logistic",
+        "metric": "log_loss_difference_vs_business_rule",
+        "estimate": 0.08220335,
+        "lower": 0.05378469,
+        "upper": 0.10877156,
+        "confidence": 0.95
+      },
+      {
+        "block_length": 200,
+        "model": "logistic",
+        "metric": "log_loss_difference_vs_business_rule",
+        "estimate": 0.08220335,
+        "lower": 0.03614012,
+        "upper": 0.12986966,
+        "confidence": 0.95
+      }
+    ],
+    "novel_profile_sensitivity": [
+      {
+        "model": "random",
+        "n": 8236,
+        "log_loss": 0.74242442,
+        "brier": 0.24881124,
+        "auroc": 0.5,
+        "average_precision": 0.30840214
+      },
+      {
+        "model": "business_rule",
+        "n": 8236,
+        "log_loss": 0.63499726,
+        "brier": 0.20952685,
+        "auroc": 0.67239512,
+        "average_precision": 0.47981743
+      },
+      {
+        "model": "logistic",
+        "n": 8236,
+        "log_loss": 0.71723006,
+        "brier": 0.23624451,
+        "auroc": 0.69223716,
+        "average_precision": 0.47121125
+      },
+      {
+        "model": "additive",
+        "n": 8236,
+        "log_loss": 0.75376347,
+        "brier": 0.25023984,
+        "auroc": 0.57339261,
+        "average_precision": 0.41538169
+      },
+      {
+        "model": "boosting",
+        "n": 8236,
+        "log_loss": 0.74497463,
+        "brier": 0.24142185,
+        "auroc": 0.63279214,
+        "average_precision": 0.44419997
+      },
+      {
+        "model": "boosting_richer_features",
+        "n": 8236,
+        "log_loss": 0.7285566,
+        "brier": 0.23971039,
+        "auroc": 0.67990757,
+        "average_precision": 0.44652016
+      }
+    ],
+    "scenario_ranges": {
+      "cost_range": [
+        0,
+        50
+      ],
+      "response_value_range": [
+        0,
+        1000
+      ],
+      "currency": "assumed USD equivalent, not observed bank economics"
+    }
+  },
+  "software": {
+    "python": "3.11.16",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2"
+  }
+}

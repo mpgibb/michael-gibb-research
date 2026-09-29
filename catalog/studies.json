@@ -776,11 +776,11 @@
       "coverage": "Real bank campaign contacts and subscription outcomes",
       "limitation": "Historical single-bank data; exclude call duration when predicting before a call."
     },
-    "execution_status": "planned",
-    "publication_status": "unpublished",
-    "result_path": null,
-    "code_url": null,
-    "published_url": null,
+    "execution_status": "evaluated",
+    "publication_status": "published",
+    "result_path": "studies/S28/results/result.json",
+    "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S28",
+    "published_url": "https://michaelpgibb.com/research/s28-sales-contact-prioritization-before-the-call-begins",
     "updated": "2026-09-29"
   },
   {
