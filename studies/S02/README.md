@@ -1,6 +1,6 @@
 # S02 — Inventory planning with coherent demand uncertainty
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: data ready. The publisher files have been inspected and verified. The evaluation protocol is frozen before model fitting; no finding is claimed.
 
 ## Decision
 
@@ -8,7 +8,7 @@ A merchandise planner must balance excess inventory against missed sales across 
 
 ## Proposed data
 
-[M5 Walmart sales](https://github.com/Mcompetitions/M5-methods) — M5 competition organizers / Walmart. Actual files, release and publication rights require inspection before evaluation.
+[M5 Walmart sales](https://github.com/Mcompetitions/M5-methods) — M5 competition organizers / Walmart. See [DATA.md](DATA.md) for inspected files, hashes, field timing and access conditions. Raw files are not redistributed.
 
 ## Research design
 
@@ -30,4 +30,6 @@ Visitors adjust lead time, shortage cost and storage budget. Linked charts show 
 
 Recorded sales are not unconstrained demand. True stock availability and economic costs are missing; stockout reduction and dollar savings must remain simulation results.
 
-There is no runnable study or result artifact yet. The catalog records the next verified stage.
+## Reproduce
+
+Install the locked environment with `uv sync --frozen`. Place the four official files described in DATA.md in an external directory under `S02`. Run `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S02/study.py`. The command validates inputs, executes the frozen comparisons and writes a schema-validated result. [PROTOCOL.md](PROTOCOL.md) specifies the split, tuning, uncertainty and simulator. Results remain unpublished until execution and verification.

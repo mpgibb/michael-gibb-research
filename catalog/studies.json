@@ -48,7 +48,7 @@
       "coverage": "Real daily product-store sales; historical benchmark",
       "limitation": "Sales are not unconstrained demand; inventory costs and stockouts are not fully observed."
     },
-    "execution_status": "planned",
+    "execution_status": "data_ready",
     "publication_status": "unpublished",
     "result_path": null,
     "code_url": null,

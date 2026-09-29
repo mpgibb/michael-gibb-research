@@ -1,0 +1,110 @@
+{
+  "study_id": "S02",
+  "seed": 20260929,
+  "evaluated_on": "2026-09-29",
+  "items": [
+    "FOODS_1_167",
+    "FOODS_1_150",
+    "FOODS_1_184",
+    "FOODS_2_123",
+    "FOODS_2_154",
+    "FOODS_2_326",
+    "FOODS_3_705",
+    "FOODS_3_163",
+    "FOODS_3_416",
+    "HOBBIES_1_421",
+    "HOBBIES_1_157",
+    "HOBBIES_1_245",
+    "HOBBIES_2_071",
+    "HOBBIES_2_069",
+    "HOBBIES_2_099",
+    "HOUSEHOLD_1_089",
+    "HOUSEHOLD_1_208",
+    "HOUSEHOLD_1_048",
+    "HOUSEHOLD_2_259",
+    "HOUSEHOLD_2_300",
+    "HOUSEHOLD_2_429"
+  ],
+  "tuning_origin": 1689,
+  "calibration_origins": [
+    1717,
+    1724,
+    1731,
+    1738,
+    1745,
+    1752,
+    1759,
+    1766,
+    1773,
+    1780,
+    1787,
+    1794,
+    1801,
+    1808,
+    1815,
+    1822,
+    1829
+  ],
+  "final_origins": [
+    1857,
+    1885,
+    1913,
+    1941
+  ],
+  "horizon": 28,
+  "training_stride": 7,
+  "training_window": 730,
+  "min_history": 365,
+  "quantiles": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "candidate_leaves": [
+    7,
+    15
+  ],
+  "iterations": 120,
+  "scenario_draws": 256,
+  "bootstrap_repetitions": 500,
+  "lead_times": [
+    0,
+    3,
+    7
+  ],
+  "holding_costs": [
+    0.01,
+    0.05
+  ],
+  "lost_sale_costs": [
+    1,
+    5
+  ],
+  "storage_multipliers": [
+    0.5,
+    1,
+    2
+  ],
+  "files": {
+    "calendar.csv": {
+      "sha256": "568d0fe5f41790142379698732908e4e57432c1c6396f3f59fb880a9c2b54231",
+      "bytes": 112477,
+      "url": "https://drive.google.com/file/d/1eeU8Me44yzgWsDD0dYrX4xVOixil_H4u/view"
+    },
+    "sales_train_evaluation.csv": {
+      "sha256": "c21a519596680feb86f27a9e62f6c8b583f8be60c2c195f080ae8ca2990af2b7",
+      "bytes": 121168898,
+      "url": "https://drive.google.com/file/d/1-khP8tp1gRTfaQQV_PlKd6R_3Mw5KiBw/view"
+    },
+    "sales_test_evaluation.csv": {
+      "sha256": "73773250dd7f7464f7a1bf3a54874dc7fc8cbb49885cd0bf1efe09bf48fd930d",
+      "bytes": 3260569,
+      "url": "https://drive.google.com/file/d/1Bj7Xj15yn4j6-BM_mpSmOVTV0c2ihEdo/view"
+    },
+    "sell_prices.csv": {
+      "sha256": "5c7cf045b1abbdc8d5007809c40b3682c5216075937f93e2cef01caddc4a30d9",
+      "bytes": 237073689,
+      "url": "https://drive.google.com/file/d/1YKo2D7rpg9y5L-qaidUjyJaKvTIR0rMI/view"
+    }
+  }
+}
