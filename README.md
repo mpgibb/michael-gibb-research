@@ -2,15 +2,21 @@
 
 Research by Michael P. Gibb, Ph.D. Public portfolio: [michaelpgibb.com/research](https://michaelpgibb.com/research).
 
-The catalog accounts for 60 study designs across 20 industries. **S28, S02 and S04 have executed public-data evaluations. The other 57 have no completed findings.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
+The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04 and S58 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. The other 55 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
 
 ## Evaluated research
+
+- [S58 — Workflow delays](studies/S58): an application-separated survival comparison. Detailed history reduces restricted-time forecasting error by 1.6%; the staffing interaction remains an explicit assumption rather than an observed improvement.
 
 - [S04 — Advertising incrementality](studies/S04): a corrected Criteo benchmark with profile-separated learning and independent policy evaluation. The selected honest forest does not demonstrate an advantage over response targeting at the prespecified capacity.
 
 - [S02 — Inventory planning](studies/S02): a 210-series M5 forecast comparison and explicit inventory replay. Better measured sales forecasts reduce assumed cost in the tested scenarios, but service and cost are different objectives; no realized savings are claimed.
 
 - [S28 — Sales contact prioritization](studies/S28): a chronological UCI Bank Marketing evaluation. A simple history-and-recency rule has lower final-period log loss than the logistic model selected during development. This is response prediction among previously observed contacts, not proof that calling causes additional subscriptions.
+
+## Baseline work in progress
+
+[S60 — Agent reliability](studies/S60/BASELINE_REPORT.md) recomputes 1,980 publisher-recorded dialogs. New validation-intervention trials require model access, version pinning and a bounded budget before execution.
 
 ## Reproduction
 

@@ -1,0 +1,478 @@
+{
+  "study_id": "S60",
+  "artifact_kind": "publisher_trajectory_baseline_audit",
+  "execution_scope": "Reanalysis of recorded publisher trials; no new model calls or intervention outcomes.",
+  "run_id": "S60-audit-7caac4d6",
+  "code_version": "7caac4d64c177ae9b1fb83faecfdab2f62230958",
+  "source_sha256": {
+    "research_program/__init__.py": "5abb4829b477fd3068ee4c11dad2b59cd33e90aad06a17a5e9fb2f840a75abf1",
+    "research_program/evaluation.py": "09a5d060c34b8cd1e5a3330d90f5ff3e12adbca8cfe1ebe3297da2b91d227e45",
+    "research_program/io.py": "16de123c16d80bce5eb8d6766224dec1729d7c00449c2528f2348d86ad68d35f",
+    "research_program/validate.py": "3e6a591e2b77799bdf73683db438b2998e2e457340626c98b7ceed510ab3329e",
+    "studies/S60/config.json": "4c8f50c00580ccf15f632db242b2f433fbef3afb87b1a62b9e38552076cebb84",
+    "studies/S60/publisher_audit.py": "4380cc918bd71663a2033b4e29b336403ebb5a8b395ab0ff1da2d3622f2118e1",
+    "uv.lock": "15f381c7c88897e1df049af6297905625b6869a6c9ff110ab1647ec2d0f305f4"
+  },
+  "benchmark_commit": "59a200c6d575d595120f1cb70fea53cef0632f6b",
+  "files": [
+    {
+      "file": "gpt-4o-airline.json",
+      "sha256": "e9e6c0297660c537f83d4fd9c476ce7a9a86ecd2784874b7bfc13be598e37bfa",
+      "publisher_model_label": "gpt-4o",
+      "exact_model_snapshot": null,
+      "environment": "airline",
+      "audit": {
+        "runs": 200,
+        "tasks": 50,
+        "repeats_min": 4,
+        "repeats_max": 4,
+        "recorded_successes": 84,
+        "tool_calls": 1164,
+        "repeated_identical_calls": 27,
+        "escalated_dialogs": 48,
+        "recorded_user_cost_USD": null,
+        "cost_metadata_rows": 195,
+        "complete_api_cost_USD": null,
+        "latency_seconds": null,
+        "reward_disagreements": 0,
+        "missing_reward_metadata_rows": 5
+      },
+      "metrics": [
+        {
+          "repeat_subset": "all_available",
+          "k": 1,
+          "estimate": 0.42,
+          "lower": 0.32,
+          "upper": 0.52,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 2,
+          "estimate": 0.27333333,
+          "lower": 0.17666667,
+          "upper": 0.38008333,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 3,
+          "estimate": 0.22,
+          "lower": 0.119875,
+          "upper": 0.33,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 4,
+          "estimate": 0.2,
+          "lower": 0.1,
+          "upper": 0.3005,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 1,
+          "estimate": 0.42,
+          "lower": 0.32,
+          "upper": 0.52,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 2,
+          "estimate": 0.27333333,
+          "lower": 0.17666667,
+          "upper": 0.38008333,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 3,
+          "estimate": 0.22,
+          "lower": 0.119875,
+          "upper": 0.33,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 4,
+          "estimate": 0.2,
+          "lower": 0.1,
+          "upper": 0.3005,
+          "confidence": 0.95
+        }
+      ]
+    },
+    {
+      "file": "gpt-4o-retail.json",
+      "sha256": "df01707894836168ff0ec9616b0bf08f66c7e5afcf313e5fe4f7a2f5c2ec938b",
+      "publisher_model_label": "gpt-4o",
+      "exact_model_snapshot": null,
+      "environment": "retail",
+      "audit": {
+        "runs": 460,
+        "tasks": 115,
+        "repeats_min": 4,
+        "repeats_max": 4,
+        "recorded_successes": 278,
+        "tool_calls": 3274,
+        "repeated_identical_calls": 33,
+        "escalated_dialogs": 25,
+        "recorded_user_cost_USD": null,
+        "cost_metadata_rows": 458,
+        "complete_api_cost_USD": null,
+        "latency_seconds": null,
+        "reward_disagreements": 0,
+        "missing_reward_metadata_rows": 2
+      },
+      "metrics": [
+        {
+          "repeat_subset": "all_available",
+          "k": 1,
+          "estimate": 0.60434783,
+          "lower": 0.52826087,
+          "upper": 0.67391304,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 2,
+          "estimate": 0.49130435,
+          "lower": 0.40865942,
+          "upper": 0.56956522,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 3,
+          "estimate": 0.43043478,
+          "lower": 0.34347826,
+          "upper": 0.51092391,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 4,
+          "estimate": 0.3826087,
+          "lower": 0.28695652,
+          "upper": 0.46956522,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 1,
+          "estimate": 0.60434783,
+          "lower": 0.52826087,
+          "upper": 0.67391304,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 2,
+          "estimate": 0.49130435,
+          "lower": 0.40865942,
+          "upper": 0.56956522,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 3,
+          "estimate": 0.43043478,
+          "lower": 0.34347826,
+          "upper": 0.51092391,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 4,
+          "estimate": 0.3826087,
+          "lower": 0.28695652,
+          "upper": 0.46956522,
+          "confidence": 0.95
+        }
+      ]
+    },
+    {
+      "file": "sonnet-35-new-retail.json",
+      "sha256": "0df526398e9d2720c32d340815cffb04fe8c4f8a61b1f4f84bf3bb558f760131",
+      "publisher_model_label": "sonnet-35-new",
+      "exact_model_snapshot": null,
+      "environment": "retail",
+      "audit": {
+        "runs": 920,
+        "tasks": 115,
+        "repeats_min": 8,
+        "repeats_max": 8,
+        "recorded_successes": 637,
+        "tool_calls": 7086,
+        "repeated_identical_calls": 106,
+        "escalated_dialogs": 79,
+        "recorded_user_cost_USD": null,
+        "cost_metadata_rows": 919,
+        "complete_api_cost_USD": null,
+        "latency_seconds": null,
+        "reward_disagreements": 0,
+        "missing_reward_metadata_rows": 1
+      },
+      "metrics": [
+        {
+          "repeat_subset": "all_available",
+          "k": 1,
+          "estimate": 0.6923913,
+          "lower": 0.63475543,
+          "upper": 0.74891304,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 2,
+          "estimate": 0.57608696,
+          "lower": 0.50555901,
+          "upper": 0.6428882,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 3,
+          "estimate": 0.50885093,
+          "lower": 0.43395963,
+          "upper": 0.58184006,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 4,
+          "estimate": 0.46223602,
+          "lower": 0.38657143,
+          "upper": 0.53977019,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 1,
+          "estimate": 0.70652174,
+          "lower": 0.63478261,
+          "upper": 0.7673913,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 2,
+          "estimate": 0.61014493,
+          "lower": 0.53043478,
+          "upper": 0.68550725,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 3,
+          "estimate": 0.56086957,
+          "lower": 0.47391304,
+          "upper": 0.64130435,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 4,
+          "estimate": 0.53043478,
+          "lower": 0.44347826,
+          "upper": 0.6173913,
+          "confidence": 0.95
+        }
+      ]
+    },
+    {
+      "file": "sonnet-35-new-airline.json",
+      "sha256": "fe62fcd514b855b36f156dd4c3c7748597b392b006aff739b53337a9f3ba94d1",
+      "publisher_model_label": "sonnet-35-new",
+      "exact_model_snapshot": null,
+      "environment": "airline",
+      "audit": {
+        "runs": 400,
+        "tasks": 50,
+        "repeats_min": 8,
+        "repeats_max": 8,
+        "recorded_successes": 184,
+        "tool_calls": 2761,
+        "repeated_identical_calls": 85,
+        "escalated_dialogs": 131,
+        "recorded_user_cost_USD": null,
+        "cost_metadata_rows": 394,
+        "complete_api_cost_USD": null,
+        "latency_seconds": null,
+        "reward_disagreements": 0,
+        "missing_reward_metadata_rows": 6
+      },
+      "metrics": [
+        {
+          "repeat_subset": "all_available",
+          "k": 1,
+          "estimate": 0.46,
+          "lower": 0.36,
+          "upper": 0.555,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 2,
+          "estimate": 0.32571429,
+          "lower": 0.22283929,
+          "upper": 0.42358929,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 3,
+          "estimate": 0.2625,
+          "lower": 0.16283929,
+          "upper": 0.35824107,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "all_available",
+          "k": 4,
+          "estimate": 0.22428571,
+          "lower": 0.12455,
+          "upper": 0.31772143,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 1,
+          "estimate": 0.455,
+          "lower": 0.354875,
+          "upper": 0.555,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 2,
+          "estimate": 0.31333333,
+          "lower": 0.20333333,
+          "upper": 0.41666667,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 3,
+          "estimate": 0.245,
+          "lower": 0.13,
+          "upper": 0.355,
+          "confidence": 0.95
+        },
+        {
+          "repeat_subset": "first_four",
+          "k": 4,
+          "estimate": 0.2,
+          "lower": 0.08,
+          "upper": 0.32,
+          "confidence": 0.95
+        }
+      ]
+    }
+  ],
+  "historical_model_comparisons": [
+    {
+      "environment": "retail",
+      "k": 1,
+      "comparison": "publisher sonnet-35-new minus publisher gpt-4o; first four repeats",
+      "estimate": 0.10217391,
+      "lower": 0.03913043,
+      "upper": 0.16304348,
+      "confidence": 0.95
+    },
+    {
+      "environment": "retail",
+      "k": 2,
+      "comparison": "publisher sonnet-35-new minus publisher gpt-4o; first four repeats",
+      "estimate": 0.11884058,
+      "lower": 0.0448913,
+      "upper": 0.1898913,
+      "confidence": 0.95
+    },
+    {
+      "environment": "retail",
+      "k": 3,
+      "comparison": "publisher sonnet-35-new minus publisher gpt-4o; first four repeats",
+      "estimate": 0.13043478,
+      "lower": 0.04565217,
+      "upper": 0.20869565,
+      "confidence": 0.95
+    },
+    {
+      "environment": "retail",
+      "k": 4,
+      "comparison": "publisher sonnet-35-new minus publisher gpt-4o; first four repeats",
+      "estimate": 0.14782609,
+      "lower": 0.05217391,
+      "upper": 0.23478261,
+      "confidence": 0.95
+    },
+    {
+      "environment": "airline",
+      "k": 1,
+      "comparison": "publisher sonnet-35-new minus publisher gpt-4o; first four repeats",
+      "estimate": 0.035,
+      "lower": -0.06,
+      "upper": 0.13,
+      "confidence": 0.95
+    },
+    {
+      "environment": "airline",
+      "k": 2,
+      "comparison": "publisher sonnet-35-new minus publisher gpt-4o; first four repeats",
+      "estimate": 0.04,
+      "lower": -0.06341667,
+      "upper": 0.14333333,
+      "confidence": 0.95
+    },
+    {
+      "environment": "airline",
+      "k": 3,
+      "comparison": "publisher sonnet-35-new minus publisher gpt-4o; first four repeats",
+      "estimate": 0.025,
+      "lower": -0.075,
+      "upper": 0.125,
+      "confidence": 0.95
+    },
+    {
+      "environment": "airline",
+      "k": 4,
+      "comparison": "publisher sonnet-35-new minus publisher gpt-4o; first four repeats",
+      "estimate": 0.0,
+      "lower": -0.1,
+      "upper": 0.1,
+      "confidence": 0.95
+    }
+  ],
+  "planned_final_task_ids": [
+    105,
+    83,
+    15,
+    112,
+    9,
+    72,
+    50,
+    44,
+    104,
+    76,
+    110,
+    98,
+    96,
+    109,
+    70,
+    64,
+    37,
+    74,
+    13,
+    108
+  ],
+  "new_trial_results": null,
+  "limitations": [
+    "Dated model snapshots, matched user configurations and total cost/latency are unavailable in historical files.",
+    "Source rewards are checked for internal agreement, not independently reconstructed from final databases in this audit.",
+    "Repeated identical calls are descriptive, not adjudicated unnecessary actions.",
+    "Publisher model differences do not identify the effect of the planned validation intervention."
+  ]
+}

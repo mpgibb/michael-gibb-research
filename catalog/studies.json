@@ -1616,11 +1616,11 @@
       "coverage": "Real loan-application process event logs; 2016–2017",
       "limitation": "One institution and historical process; automation benefits require a separate intervention evaluation."
     },
-    "execution_status": "data_ready",
-    "publication_status": "unpublished",
-    "result_path": null,
+    "execution_status": "evaluated",
+    "publication_status": "published",
+    "result_path": "studies/S58/results/result.json",
     "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S58",
-    "published_url": null,
+    "published_url": "https://michaelpgibb.com/research/s58-where-business-workflows-accumulate-delay",
     "updated": "2026-09-29"
   },
   {
@@ -1672,7 +1672,7 @@
       "coverage": "Simulated customer-service tasks, policies, tools and users",
       "limitation": "Simulation benchmark, not observed workplace productivity; keep evaluation cases separate from tuning."
     },
-    "execution_status": "data_ready",
+    "execution_status": "baseline_complete",
     "publication_status": "unpublished",
     "result_path": null,
     "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S60",

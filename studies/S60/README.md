@@ -1,6 +1,6 @@
 # S60 — Can an AI service agent complete the task reliably?
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: publisher-trajectory baseline complete; controlled intervention trials remain unrun. Audit `S60-audit-7caac4d6` retains 1,980 dialogs and explicitly records missing metadata. See [BASELINE_REPORT.md](BASELINE_REPORT.md).
 
 ## Decision
 
@@ -31,3 +31,7 @@ A task replay compares baseline and improved agents step by step. Visitors toggl
 Simulated customer-service tasks do not establish real customer satisfaction or labor savings. Escalation is not autonomous completion; pin benchmark versions and distinguish synthetic stress tasks from the official evaluation.
 
 There is no runnable study or result artifact yet. The catalog records the next verified stage.
+
+## Reproduce the baseline
+
+Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S60/publisher_audit.py` and `uv run python scripts/report_s60_baseline.py`. This calls no model API. [PROTOCOL.md](PROTOCOL.md) records the separate, still-unrun intervention experiment; exact model versions, access and a bounded approved budget are required.

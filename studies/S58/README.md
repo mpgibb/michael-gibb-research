@@ -1,14 +1,14 @@
 # S58 — Where business workflows accumulate delay
 
-Status: data ready. The complete source and application/offer grain are inspected; the survival protocol is frozen before fitting. No finding is claimed yet.
+Status: evaluated. The required bibliographic notification was submitted on September 29, 2026. Run `S58-9dd9fde5-183c5e51` evaluates 2,365 held-out December applications. Detailed workflow history reduces restricted-time MAE from 8.72 to 8.58 days; this is a modest forecasting gain, not faster actual completion. See [REPORT.md](REPORT.md).
 
 ## Decision
 
 An operations leader needs to know which process paths predict long completion times and where limited review capacity might help. Study bottlenecks and remaining-time uncertainty in a real loan-application workflow.
 
-## Proposed data
+## Data
 
-[BPI Challenge 2017](https://figshare.com/articles/dataset/BPI_Challenge_2017/12696884) — 4TU.ResearchData / contributing financial institution. Actual files, release and publication rights require inspection before evaluation.
+[BPI Challenge 2017](https://figshare.com/articles/dataset/BPI_Challenge_2017/12696884) — 4TU.ResearchData / contributing financial institution. Original XES checksum, application/offer audit, event timing and reuse conditions are recorded in [DATA.md](DATA.md).
 
 ## Research design
 
@@ -32,4 +32,4 @@ Observed delays do not prove employee inefficiency or the causal effect of autom
 
 ## Reproduce
 
-Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S58/study.py`. Raw events remain external. See [DATA.md](DATA.md) for source and publication conditions and [PROTOCOL.md](PROTOCOL.md) for the exact endpoint, cohorts and censoring rules. Publication remains separate from execution until evaluation and required source notification are complete.
+Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S58/study.py`. Raw events remain external. See [DATA.md](DATA.md) for source and publication conditions and [PROTOCOL.md](PROTOCOL.md) for the exact endpoint, cohorts and censoring rules. Publication remains separate from execution and requires verified website integration.
