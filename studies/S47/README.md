@@ -1,6 +1,6 @@
 # S47 — Service-friction signals and a three-month churn planning window
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: data ready. Official source and repeated-profile audit are complete; protocol and runnable comparison are frozen before fitting. No evaluated result is claimed.
 
 ## Decision
 
@@ -8,7 +8,7 @@ A telecom service leader wants to understand whether call failures, complaints a
 
 ## Proposed data
 
-[Iranian Churn](https://archive.ics.uci.edu/dataset/563/iranian+churn+dataset) — UCI / original telecom study authors. Actual files, release and publication rights require inspection before evaluation.
+[Iranian Churn](https://archive.ics.uci.edu/dataset/563/iranian+churn+dataset) — UCI / original telecom study authors. Actual fields, attribution and checksum are documented in [DATA.md](DATA.md).
 
 ## Research design
 
@@ -30,4 +30,6 @@ Visitors choose a service-capacity threshold and toggle feature families. Risk c
 
 A small single-company sample cannot establish that fixing call failures causes retention. There are no repeated time cohorts for a genuine out-of-time validation; inferred customer value is not verified profit.
 
-There is no runnable study or result artifact yet. The catalog records the next verified stage.
+## Reproduce
+
+Set `RESEARCH_DATA_DIR` to a private directory, run `uv sync --frozen`, then `uv run python -W error studies/S47/study.py`. Analysis source must be committed and clean. [PROTOCOL.md](PROTOCOL.md) records grouped development, calibration, final testing, feature sensitivities and the unrun experiment-planning scenario.
