@@ -1,0 +1,12 @@
+{
+ "study_id":"S60","seed":20260929,"evaluated_on":"2026-09-29",
+ "benchmark_commit":"59a200c6d575d595120f1cb70fea53cef0632f6b",
+ "historical_files":{
+  "gpt-4o-airline.json":"e9e6c0297660c537f83d4fd9c476ce7a9a86ecd2784874b7bfc13be598e37bfa",
+  "gpt-4o-retail.json":"df01707894836168ff0ec9616b0bf08f66c7e5afcf313e5fe4f7a2f5c2ec938b",
+  "sonnet-35-new-retail.json":"0df526398e9d2720c32d340815cffb04fe8c4f8a61b1f4f84bf3bb558f760131",
+  "sonnet-35-new-airline.json":"fe62fcd514b855b36f156dd4c3c7748597b392b006aff739b53337a9f3ba94d1"
+ },
+ "bootstrap_repetitions":1000,"matched_historical_trials":[0,1,2,3],
+ "new_trial_plan":{"domain":"retail","development_task_ids":[0,1,2],"final_task_count":20,"repeats_per_task":4,"policies":["baseline_tool_calling","schema_validation"],"max_agent_steps":30,"max_concurrency":1,"provider":null,"agent_model_snapshot":null,"user_model_snapshot":null,"approved_cost_cap_USD":null}
+}

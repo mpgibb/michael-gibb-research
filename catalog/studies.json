@@ -1672,10 +1672,10 @@
       "coverage": "Simulated customer-service tasks, policies, tools and users",
       "limitation": "Simulation benchmark, not observed workplace productivity; keep evaluation cases separate from tuning."
     },
-    "execution_status": "planned",
+    "execution_status": "data_ready",
     "publication_status": "unpublished",
     "result_path": null,
-    "code_url": null,
+    "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S60",
     "published_url": null,
     "updated": "2026-09-29"
   }
