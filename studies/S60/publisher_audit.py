@@ -11,14 +11,15 @@ CONFIG=json.loads((HERE/'config.json').read_text())
 
 
 def analyze_runs(runs):
-    groups=defaultdict(list);keys=set();escalations=0;repeat_calls=0;tool_calls=0;user_cost=0.;cost_known=0;reward_disagreements=0
+    groups=defaultdict(list);keys=set();escalations=0;repeat_calls=0;tool_calls=0;user_cost=0.;cost_known=0;reward_disagreements=0;reward_metadata_missing=0
     for row in runs:
         key=(row['task_id'],row['trial'])
         if key in keys:raise ValueError('Duplicate task/trial pair')
         keys.add(key)
         if row['reward'] not in [0,1]:raise ValueError('Nonbinary reward')
         groups[row['task_id']].append(row)
-        info=row.get('info',{});reward=info.get('reward_info',{}).get('reward')
+        info=row.get('info') or {};reward=(info.get('reward_info') or {}).get('reward')
+        reward_metadata_missing+=int(reward is None)
         if reward is not None and reward!=row['reward']:reward_disagreements+=1
         seen=set();escalated=False
         for message in row['traj']:
@@ -37,7 +38,7 @@ def analyze_runs(runs):
     for variant in ['all_available','first_four']:
         selected={t:sorted(groups[t],key=lambda x:x['trial'])[:4] if variant=='first_four' else groups[t] for t in tasks}
         values[variant]={k:np.array([pass_power(sum(int(x['reward']) for x in selected[t]),len(selected[t]),k) for t in tasks]) for k in [1,2,3,4]}
-    return tasks,values,{'runs':len(runs),'tasks':len(tasks),'repeats_min':min(counts),'repeats_max':max(counts),'recorded_successes':sum(int(x['reward']) for x in runs),'tool_calls':tool_calls,'repeated_identical_calls':repeat_calls,'escalated_dialogs':escalations,'recorded_user_cost_USD':user_cost if cost_known==len(runs) else None,'cost_metadata_rows':cost_known,'complete_api_cost_USD':None,'latency_seconds':None,'reward_disagreements':reward_disagreements}
+    return tasks,values,{'runs':len(runs),'tasks':len(tasks),'repeats_min':min(counts),'repeats_max':max(counts),'recorded_successes':sum(int(x['reward']) for x in runs),'tool_calls':tool_calls,'repeated_identical_calls':repeat_calls,'escalated_dialogs':escalations,'recorded_user_cost_USD':user_cost if cost_known==len(runs) else None,'cost_metadata_rows':cost_known,'complete_api_cost_USD':None,'latency_seconds':None,'reward_disagreements':reward_disagreements,'missing_reward_metadata_rows':reward_metadata_missing}
 
 
 def main():
