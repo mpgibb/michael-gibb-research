@@ -2,7 +2,7 @@
 
 Research by Michael P. Gibb, Ph.D. Public portfolio: [michaelpgibb.com/research](https://michaelpgibb.com/research).
 
-The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04, S58 and S43 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. The other 54 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
+The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04, S58 and S43 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. S13 has inspected data; S07 and S22 have source-access or reuse dependencies. The other 51 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
 
 ## Evaluated research
 

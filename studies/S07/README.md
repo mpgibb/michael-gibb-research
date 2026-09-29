@@ -1,6 +1,8 @@
 # S07 — Subscription renewal risk with actionable lead time
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: blocked; source prerequisite pending as of September 29, 2026. Official source dictionary and reuse terms inspected. The download requires an authenticated Kaggle account and acceptance of KKBox competition rules. Data ingestion and all model fitting remain unrun.
+
+Next action: Complete authorized source access, then inspect the official label generator, expiry alignment and mature-label calendar. Do not substitute an unofficial mirror or redistribute member records. See [DATA.md](DATA.md).
 
 ## Decision
 

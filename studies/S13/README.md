@@ -1,14 +1,14 @@
 # S13 — Reliable quality screening with many sensors and few failures
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: data_ready. The official archive and calendar have been inspected, and the evaluation is frozen in [PROTOCOL.md](PROTOCOL.md). No model result is claimed before execution.
 
 ## Decision
 
 A manufacturing quality leader must identify high-risk units without flooding inspection capacity. Test whether a stable, compact sensor model can match a more complex classifier while controlling missed failures.
 
-## Proposed data
+## Inspected data
 
-[SECOM](https://archive.ics.uci.edu/dataset/179/secom) — UCI / manufacturing-process data donor. Actual files, release and publication rights require inspection before evaluation.
+[SECOM](https://archive.ics.uci.edu/dataset/179/secom) — UCI / manufacturing-process data donor. The actual files contain 590 sensors and 104 failures. CC BY 4.0 attribution and timing limitations are recorded in [DATA.md](DATA.md).
 
 ## Research design
 
@@ -30,4 +30,4 @@ An inspection-budget slider updates missed-failure and unnecessary-inspection co
 
 Anonymous sensors prevent engineering root-cause claims. A correlated measurement is not a proven process fault, and this small historical sample does not validate deployment in a modern plant.
 
-There is no runnable study or result artifact yet. The catalog records the next verified stage.
+Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S13/study.py`. Only aggregate results will be published after evaluation and verification.
