@@ -23,6 +23,10 @@ Pass^k is the fraction of k-repeat subsets on which every attempt succeeds, comp
 
 Repeated identical calls are counted descriptively, without claiming they were unnecessary. Calls to transfer_to_human_agents are reported separately; the original reward may count an expected escalation as success. New autonomous-completion trials will distinguish escalation from completion rather than silently changing historical benchmark rewards.
 
+## Offline validation intervention
+
+The frozen schema validator was exercised against the pinned source tool definitions and all 14,285 recorded tool calls. All 10,360 retail calls pass schema validation. Three airline calls fail required-argument or enum checks. These are retrospective syntax findings only: rejecting a call does not establish successful recovery or better completion. The validation function checks JSON, duplicate keys, tool names, required fields, types, enums and unsupported arguments without invoking any tool. See [schema-audit.json](results/schema-audit.json). This implements the intervention but does not replace repeated controlled trials.
+
 ## Remaining controlled experiment
 
 [PROTOCOL.md](PROTOCOL.md) freezes an outcome-independent final subset of 20 retail tasks, four repeats and two policies: basic tool calling versus syntactic/schema tool validation. No new trial has run. Provider access, exact model snapshots and an approved bounded budget are still required. The proposed 160 dialogs remain limited to the benchmark simulation and 30 steps each. Until then, intervention effects, total cost, latency and independent final-state outcomes remain unmeasured.
