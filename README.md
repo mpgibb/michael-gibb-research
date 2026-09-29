@@ -2,9 +2,11 @@
 
 Research by Michael P. Gibb, Ph.D. Public portfolio: [michaelpgibb.com/research](https://michaelpgibb.com/research).
 
-The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04 and S58 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. The other 55 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
+The catalog accounts for 60 study designs across 20 industries. **S28, S02, S04, S58 and S43 have executed public-data evaluations. S60 has a publisher-trajectory baseline; its controlled intervention trials remain unrun. The other 54 studies are planned.** The four earlier synthetic demonstrations are separate projects and do not count toward this program.
 
 ## Evaluated research
+
+- [S43 — Property valuation](studies/S43): a pre-sale characteristics snapshot and later Cook County sales. Spatial boosting has no established accuracy advantage over hedonic regression; nominal 90% intervals cover 89.8% countywide but only 70.1% in the historical Hyde Park township cohort.
 
 - [S58 — Workflow delays](studies/S58): an application-separated survival comparison. Detailed history reduces restricted-time forecasting error by 1.6%; the staffing interaction remains an explicit assumption rather than an observed improvement.
 

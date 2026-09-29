@@ -1196,11 +1196,11 @@
       "coverage": "Parcel-level sales linked to property characteristics",
       "limitation": "Join by parcel/year carefully; sales validity, assessment timing and leakage require attention."
     },
-    "execution_status": "planned",
-    "publication_status": "unpublished",
-    "result_path": null,
-    "code_url": null,
-    "published_url": null,
+    "execution_status": "evaluated",
+    "publication_status": "published",
+    "result_path": "studies/S43/results/result.json",
+    "code_url": "https://github.com/mpgibb/michael-gibb-research/tree/main/studies/S43",
+    "published_url": "https://michaelpgibb.com/research/s43-chicago-area-property-valuation-with-honest-geographic-uncertainty",
     "updated": "2026-09-29"
   },
   {

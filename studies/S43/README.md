@@ -1,14 +1,14 @@
 # S43 — Chicago-area property valuation with honest geographic uncertainty
 
-Status: planned. No analysis has been run and no finding is claimed.
+Status: evaluated. Run `S43-a92f1ea2-98e410fd` evaluates 24,551 later sales using a fixed pre-sale characteristics snapshot. Spatial boosting does not establish a clear gain over regularized hedonic regression, and countywide interval coverage hides substantial local gaps. See [REPORT.md](REPORT.md).
 
 ## Decision
 
 A real-estate analytics team must distinguish predictable property value from uncertainty caused by sparse local comparables. Test whether flexible spatial models improve sale-price estimates without hiding neighborhood-level error.
 
-## Proposed data
+## Inspected data
 
-[Cook County Assessor parcel sales and characteristics](https://datacatalog.cookcountyil.gov/stories/s/Assessor-2025-Open-Data-Refresh/gzdr-q7c4/) — Cook County Assessor's Office. Actual files, release and publication rights require inspection before evaluation.
+[Cook County Assessor parcel sales and characteristics](https://datacatalog.cookcountyil.gov/stories/s/Assessor-2025-Open-Data-Refresh/gzdr-q7c4/) — Cook County Assessor's Office. The April 2024 characteristic snapshot predates every included sale. [DATA.md](DATA.md) records source conditions, join grain and frozen checksums.
 
 ## Research design
 
@@ -30,4 +30,6 @@ A Chicago-area map lets visitors choose an aggregate neighborhood, property prof
 
 This is research on historical sales, not an appraisal. Avoid buyer/seller details, future assessments and unsupported extrapolation to unusual properties; a model interval is not a guarantee of a sale price.
 
-There is no runnable study or result artifact yet. The catalog records the next verified stage.
+## Reproduce
+
+Run `uv sync --frozen`, then `RESEARCH_DATA_DIR=/absolute/path/to/data uv run python -W error studies/S43/study.py` and `uv run python scripts/report_s43.py`. The mutable source API must match the pinned monthly checksums. Raw data remain external. [PROTOCOL.md](PROTOCOL.md) describes the calendar, spatial and parcel stress tests.
